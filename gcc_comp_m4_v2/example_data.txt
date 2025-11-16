@@ -1,0 +1,137 @@
+Vendor Risk Assessment - Sample Data
+
+=== Vendor 1: CloudProvider Inc ===
+Type: Cloud Infrastructure Provider
+SOC 2 Date: 2024-06-01
+ISO 27001: Certified
+Penetration Testing: Annual
+Breach History: None
+GDPR Compliant: Yes
+DPA Available: Yes
+Data Deletion: Automated
+SLA Guarantee: 99.9%
+Actual Uptime: 99.95%
+Data Centers: US, EU, India
+Subprocessors: 2 (BackupProvider A, CDN Provider B)
+Expected Assessment: Low Risk (Approved)
+
+=== Vendor 2: DataAnalytics Corp ===
+Type: Analytics Platform
+SOC 2 Date: 2023-01-15 (older than 1 year)
+ISO 27001: Certified
+Penetration Testing: Annual
+Breach History: 1 incident in past 3 years
+GDPR Compliant: Yes
+DPA Available: Yes
+Data Deletion: Manual process
+SLA Guarantee: 99.5%
+Actual Uptime: 99.6%
+Data Centers: US, EU
+Subprocessors: 1 (ML Platform X - WARNING: No DPA)
+Expected Assessment: Medium Risk (Approved with Conditions)
+
+=== Vendor 3: LegacySoftware LLC ===
+Type: Legacy Application Provider
+SOC 2 Date: 2021-03-10 (EXPIRED - over 3 years old)
+ISO 27001: Not Certified
+Penetration Testing: None
+Breach History: 2 incidents
+GDPR Compliant: No
+DPA Available: No
+Data Deletion: Manual with delays
+SLA Guarantee: 98.0%
+Actual Uptime: 97.5% (below guarantee)
+Data Centers: US only
+Subprocessors: None disclosed
+Expected Assessment: Critical Risk (Rejected)
+
+=== Vendor 4: SecureSaaS Platform ===
+Type: Enterprise SaaS
+SOC 2 Date: 2024-09-15 (recent)
+ISO 27001: Certified
+Penetration Testing: Quarterly
+Breach History: None
+GDPR Compliant: Yes
+DPA Available: Yes (comprehensive)
+Data Deletion: Automated with verification
+SLA Guarantee: 99.99%
+Actual Uptime: 99.99%
+Data Centers: US, EU, India, Singapore
+Subprocessors: 3 (all with DPAs)
+Expected Assessment: Low Risk (Approved)
+
+=== Vendor 5: StartupVendor Beta ===
+Type: Early-stage SaaS
+SOC 2 Date: None (not yet certified)
+ISO 27001: Not Certified
+Penetration Testing: None
+Breach History: None (new vendor)
+GDPR Compliant: In progress
+DPA Available: Template only (not signed)
+Data Deletion: Manual on request
+SLA Guarantee: 99.0%
+Actual Uptime: 98.5% (below guarantee)
+Data Centers: US only
+Subprocessors: None
+Expected Assessment: High Risk (Additional Controls Required)
+
+=== Multi-Jurisdiction Compliance Scenarios ===
+
+Scenario 1: EU Client Data Processing
+- Requires: GDPR compliance with DPA
+- Requires: Standard Contractual Clauses for non-EU subprocessors
+- Requires: Data subject rights support
+- Vendors that PASS: CloudProvider Inc, SecureSaaS Platform
+
+Scenario 2: India-Domiciled Data
+- Requires: DPDPA compliance
+- Requires: India data center availability
+- Requires: Data residency controls
+- Vendors that PASS: CloudProvider Inc, SecureSaaS Platform
+
+Scenario 3: California Consumer Data
+- Requires: CCPA compliance
+- Requires: Automated data deletion
+- Requires: Consumer rights support
+- Vendors that PASS: CloudProvider Inc, SecureSaaS Platform
+
+Scenario 4: Multi-Tenant GCC (50 Business Units)
+- Parent company requires: SOX controls
+- India operations require: RBI compliance for financial data
+- EU clients require: GDPR compliance
+- US clients require: CCPA compliance
+- Healthcare BUs require: HIPAA BAA
+- Vendors that meet ALL requirements: SecureSaaS Platform only
+
+=== Failure Scenario Examples ===
+
+Failure 1: Expired Certification (LegacySoftware LLC)
+- SOC 2 expired in 2022, never renewed
+- GCC continued using vendor until 2024 audit
+- Result: Audit finding, potential contract termination
+
+Failure 2: Hidden Subprocessor (DataAnalytics Corp)
+- ML Platform X added without GCC notification
+- No DPA coverage for subprocessor
+- EU customer data processed in US without SCCs
+- Result: Potential Schrems II violation
+
+Failure 3: DPA Clause Gap (StartupVendor Beta)
+- DPA template missing data deletion procedures
+- GCC signed without legal review
+- Cannot comply with GDPR Article 17 requests
+- Result: Manual workarounds, compliance risk
+
+Failure 4: Jurisdiction Conflict (LegacySoftware LLC)
+- US-only data centers
+- Cannot support India DPDPA data residency
+- Result: Cannot process India-domiciled data
+
+Failure 5: Blast Radius (hypothetical CloudProvider Inc breach)
+- Vendor used by 45 of 50 business units
+- Breach affects EU, US, and India jurisdictions
+- Multiple notification requirements:
+  - GDPR: 72 hours to supervisory authority
+  - DPDPA: 6 hours notification requirement
+  - CCPA: "without unreasonable delay"
+- Coordinated response required across all affected BUs

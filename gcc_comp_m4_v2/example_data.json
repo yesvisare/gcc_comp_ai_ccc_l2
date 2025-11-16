@@ -1,0 +1,133 @@
+{
+  "vendors": [
+    {
+      "name": "CloudProvider Inc",
+      "soc2_date": "2024-06-01",
+      "iso27001_certified": true,
+      "penetration_testing": true,
+      "breach_count": 0,
+      "gdpr_compliant": true,
+      "dpa_available": true,
+      "data_deletion_automated": true,
+      "sla_guarantee": 99.9,
+      "actual_uptime": 99.95,
+      "data_center_locations": ["US", "EU", "India"],
+      "subprocessors": [
+        {
+          "name": "BackupProvider A",
+          "location": "EU",
+          "has_dpa": true
+        },
+        {
+          "name": "CDN Provider B",
+          "location": "US",
+          "has_dpa": true
+        }
+      ],
+      "expected_risk_level": "Low Risk (Approved)"
+    },
+    {
+      "name": "DataAnalytics Corp",
+      "soc2_date": "2023-01-15",
+      "iso27001_certified": true,
+      "penetration_testing": true,
+      "breach_count": 1,
+      "gdpr_compliant": true,
+      "dpa_available": true,
+      "data_deletion_automated": false,
+      "sla_guarantee": 99.5,
+      "actual_uptime": 99.6,
+      "data_center_locations": ["US", "EU"],
+      "subprocessors": [
+        {
+          "name": "ML Platform X",
+          "location": "US",
+          "has_dpa": false
+        }
+      ],
+      "expected_risk_level": "Medium Risk (Approved with Conditions)"
+    },
+    {
+      "name": "LegacySoftware LLC",
+      "soc2_date": "2021-03-10",
+      "iso27001_certified": false,
+      "penetration_testing": false,
+      "breach_count": 2,
+      "gdpr_compliant": false,
+      "dpa_available": false,
+      "data_deletion_automated": false,
+      "sla_guarantee": 98.0,
+      "actual_uptime": 97.5,
+      "data_center_locations": ["US"],
+      "subprocessors": [],
+      "expected_risk_level": "Critical Risk (Rejected)"
+    },
+    {
+      "name": "SecureSaaS Platform",
+      "soc2_date": "2024-09-15",
+      "iso27001_certified": true,
+      "penetration_testing": true,
+      "breach_count": 0,
+      "gdpr_compliant": true,
+      "dpa_available": true,
+      "data_deletion_automated": true,
+      "sla_guarantee": 99.99,
+      "actual_uptime": 99.99,
+      "data_center_locations": ["US", "EU", "India", "Singapore"],
+      "subprocessors": [
+        {
+          "name": "Database Provider",
+          "location": "EU",
+          "has_dpa": true
+        },
+        {
+          "name": "Email Service",
+          "location": "US",
+          "has_dpa": true
+        },
+        {
+          "name": "Payment Processor",
+          "location": "India",
+          "has_dpa": true
+        }
+      ],
+      "expected_risk_level": "Low Risk (Approved)"
+    },
+    {
+      "name": "StartupVendor Beta",
+      "soc2_date": null,
+      "iso27001_certified": false,
+      "penetration_testing": false,
+      "breach_count": 0,
+      "gdpr_compliant": false,
+      "dpa_available": false,
+      "data_deletion_automated": false,
+      "sla_guarantee": 99.0,
+      "actual_uptime": 98.5,
+      "data_center_locations": ["US"],
+      "subprocessors": [],
+      "expected_risk_level": "High Risk (Additional Controls Required)"
+    }
+  ],
+  "sample_dpa_text": "Data Processing Agreement\n\n1. Processing Scope: This agreement defines the scope of data processing activities.\n2. Purpose Limitation: Data shall be processed only for the lawful purpose specified.\n3. Data Security: The processor shall implement appropriate security measures to protect data.\n4. Subprocessor Approval: Any sub-processor must receive prior written approval.\n5. Data Subject Rights: The processor shall assist with data subject access requests.\n6. Breach Notification: The processor shall notify the controller within 72 hours of any breach.\n7. Data Location: Data shall be stored in approved geographic locations only.\n8. Cross-Border Transfer: International transfers shall comply with Standard Contractual Clauses.\n9. Audit Rights: The controller has the right to audit the processor's compliance.\n10. Data Deletion: Data shall be deleted or returned upon termination.\n11. Liability: The processor shall indemnify the controller for damages.\n12. Termination: This agreement may be terminated with 30 days notice.",
+  "jurisdictions": ["GDPR", "DPDPA", "CCPA"],
+  "roi_scenarios": [
+    {
+      "vendor_count": 10,
+      "description": "Small GCC with minimal vendor ecosystem"
+    },
+    {
+      "vendor_count": 20,
+      "description": "Medium GCC at breakeven point"
+    },
+    {
+      "vendor_count": 50,
+      "description": "Large GCC with complex vendor landscape"
+    }
+  ],
+  "metadata": {
+    "source": "GCC Compliance M4.2 Augmented Script",
+    "purpose": "Demonstration and testing",
+    "version": "1.0.0"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "assessment_config": {
+    "risk_thresholds": {
+      "low": 90,
+      "medium": 70,
+      "high": 50
+    },
+    "category_weights": {
+      "security": 0.30,
+      "privacy": 0.25,
+      "compliance": 0.20,
+      "reliability": 0.15,
+      "data_residency": 0.10
+    },
+    "monitoring": {
+      "quarterly_review_days": 90,
+      "certification_warning_days": 90,
+      "auto_schedule_reviews": true
+    }
+  },
+  "dpa_validation": {
+    "essential_clauses": [
+      "processing_scope",
+      "purpose_limitation",
+      "data_security",
+      "subprocessor_approval",
+      "data_subject_rights",
+      "breach_notification",
+      "data_location",
+      "cross_border_transfer",
+      "audit_rights",
+      "data_deletion",
+      "liability",
+      "termination"
+    ],
+    "minimum_coverage_percentage": 100.0
+  },
+  "jurisdiction_requirements": {
+    "GDPR": {
+      "requires_dpa": true,
+      "breach_notification_hours": 72,
+      "requires_sccs": true
+    },
+    "DPDPA": {
+      "requires_india_dc": true,
+      "breach_notification_hours": 6,
+      "data_residency_mandatory": true
+    },
+    "CCPA": {
+      "requires_automated_deletion": true,
+      "consumer_rights_support": true
+    }
+  },
+  "notification_settings": {
+    "enabled": false,
+    "email_alerts": {
+      "certification_expiry": true,
+      "review_due": true,
+      "risk_level_change": true
+    },
+    "slack_alerts": {
+      "enabled": false,
+      "webhook_url": ""
+    }
+  },
+  "database": {
+    "persist_assessments": true,
+    "history_retention_days": 730
+  }
+}
