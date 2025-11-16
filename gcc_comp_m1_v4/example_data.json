@@ -1,0 +1,104 @@
+{
+  "audit_events": [
+    {
+      "event_type": "document_ingested",
+      "user_id": "system_pipeline",
+      "resource_id": "financial_report_q3_2024.pdf",
+      "action": "create",
+      "metadata": {
+        "contains_pii": false,
+        "sensitivity": "confidential",
+        "document_size_bytes": 2457600,
+        "compliance_frameworks": ["SOX", "ISO27001"]
+      }
+    },
+    {
+      "event_type": "query_executed",
+      "user_id": "john.doe@example.com",
+      "resource_id": "query_12345",
+      "action": "execute",
+      "metadata": {
+        "query_text": "What were Q3 revenue figures?",
+        "response_time_ms": 342,
+        "contains_pii": false
+      }
+    },
+    {
+      "event_type": "pii_detected",
+      "user_id": "pii_scanner_service",
+      "resource_id": "employee_data.xlsx",
+      "action": "read",
+      "metadata": {
+        "pii_types": ["email", "phone", "ssn"],
+        "pii_count": 247,
+        "remediation_required": true
+      }
+    },
+    {
+      "event_type": "access_granted",
+      "user_id": "jane.smith@example.com",
+      "resource_id": "compliance_dashboard",
+      "action": "read",
+      "metadata": {
+        "role": "compliance_officer",
+        "ip_address": "192.168.1.105",
+        "mfa_verified": true
+      }
+    },
+    {
+      "event_type": "configuration_changed",
+      "user_id": "admin@example.com",
+      "resource_id": "audit_retention_policy",
+      "action": "update",
+      "metadata": {
+        "old_retention_days": 365,
+        "new_retention_days": 2555,
+        "reason": "SOX 404 compliance requirement"
+      }
+    }
+  ],
+  "compliance_queries": [
+    "Generate audit trail report for SOX 404 compliance (Q1-Q4 2024)",
+    "Export evidence for SOC 2 security controls (January-March 2024)",
+    "List all PII detection events for GDPR compliance review",
+    "Show access denied events for security audit",
+    "Generate vendor risk assessment for OpenAI integration"
+  ],
+  "vendor_assessments": [
+    {
+      "vendor_name": "OpenAI",
+      "criteria": {
+        "data_residency": false,
+        "soc2_certified": true,
+        "gdpr_compliant": true,
+        "encryption_at_rest": true,
+        "encryption_in_transit": true,
+        "access_logs": true,
+        "data_retention": true,
+        "data_deletion": true,
+        "incident_response": true,
+        "subprocessor_disclosure": true
+      }
+    },
+    {
+      "vendor_name": "Pinecone",
+      "criteria": {
+        "data_residency": false,
+        "soc2_certified": true,
+        "gdpr_compliant": true,
+        "encryption_at_rest": true,
+        "encryption_in_transit": true,
+        "access_logs": true,
+        "data_retention": true,
+        "data_deletion": true,
+        "incident_response": true,
+        "subprocessor_disclosure": true
+      }
+    }
+  ],
+  "metadata": {
+    "source": "compliance_evidence_examples",
+    "purpose": "demonstration",
+    "frameworks": ["SOX", "SOC2", "ISO27001", "GDPR", "DPDPA"]
+  }
+}

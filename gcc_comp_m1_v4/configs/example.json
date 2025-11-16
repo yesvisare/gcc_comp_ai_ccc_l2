@@ -1,0 +1,53 @@
+{
+  "audit_trail": {
+    "enabled": true,
+    "retention_days": 2555,
+    "hash_algorithm": "SHA-256",
+    "integrity_check_interval": "daily"
+  },
+  "evidence_collection": {
+    "schedule": "daily",
+    "export_formats": ["json", "csv", "pdf"],
+    "s3_storage": {
+      "enabled": false,
+      "bucket": "compliance-evidence-bucket",
+      "object_lock": true,
+      "retention_mode": "GOVERNANCE"
+    }
+  },
+  "compliance_frameworks": {
+    "sox_404": {
+      "enabled": true,
+      "retention_years": 7,
+      "event_types": [
+        "document_ingested",
+        "access_granted",
+        "access_denied",
+        "configuration_changed",
+        "pii_detected"
+      ]
+    },
+    "iso_27001": {
+      "enabled": true,
+      "controls": ["A.12.4.1", "A.9.4.1", "A.18.1.3"]
+    },
+    "soc2": {
+      "enabled": true,
+      "trust_service_criteria": ["CC7.2", "CC8.1"]
+    },
+    "gdpr": {
+      "enabled": true,
+      "articles": ["Article 30", "Article 32"]
+    }
+  },
+  "vendor_assessment": {
+    "review_frequency": "annual",
+    "risk_threshold": 70,
+    "vendors": []
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "json",
+    "destination": "postgresql"
+  }
+}

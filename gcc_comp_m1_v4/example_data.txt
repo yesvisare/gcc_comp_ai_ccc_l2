@@ -1,0 +1,72 @@
+L3 M1.4: Compliance Documentation & Evidence - Example Audit Events
+
+1. Document Ingestion Event
+   Event Type: document_ingested
+   User: system_pipeline
+   Resource: financial_report_q3_2024.pdf
+   Action: create
+   Metadata: Contains PII=false, Sensitivity=confidential, Frameworks=SOX,ISO27001
+
+2. User Query Event
+   Event Type: query_executed
+   User: john.doe@example.com
+   Resource: query_12345
+   Action: execute
+   Metadata: Query="What were Q3 revenue figures?", Response Time=342ms
+
+3. PII Detection Event
+   Event Type: pii_detected
+   User: pii_scanner_service
+   Resource: employee_data.xlsx
+   Action: read
+   Metadata: PII Types=email,phone,ssn, Count=247, Remediation Required=true
+
+4. Access Control Event
+   Event Type: access_granted
+   User: jane.smith@example.com
+   Resource: compliance_dashboard
+   Action: read
+   Metadata: Role=compliance_officer, IP=192.168.1.105, MFA Verified=true
+
+5. Configuration Change Event
+   Event Type: configuration_changed
+   User: admin@example.com
+   Resource: audit_retention_policy
+   Action: update
+   Metadata: Old Retention=365 days, New Retention=2555 days, Reason=SOX 404
+
+---
+
+Compliance Report Queries:
+- Generate audit trail report for SOX 404 compliance (Q1-Q4 2024)
+- Export evidence for SOC 2 security controls (January-March 2024)
+- List all PII detection events for GDPR compliance review
+- Show access denied events for security audit
+- Generate vendor risk assessment for OpenAI integration
+
+---
+
+Hash Chain Integrity:
+Each event contains SHA-256 hash of: current_event_data + previous_hash
+Genesis block uses "0" × 64 as sentinel value
+Any modification breaks subsequent hashes mathematically
+
+---
+
+Vendor Risk Assessment Criteria:
+1. Data Residency - India/compliant region guarantee
+2. SOC 2 Type II Certification
+3. GDPR Compliance
+4. Encryption at Rest (AES-256)
+5. Encryption in Transit (TLS 1.2+)
+6. Access Logs Availability
+7. Configurable Data Retention
+8. Data Deletion Capability
+9. Incident Response SLA
+10. Subprocessor Disclosure
+
+Risk Scoring:
+- 90-100%: LOW (Approved for production)
+- 70-89%: MEDIUM (Approved with monitoring)
+- 50-69%: HIGH (Requires remediation plan)
+- <50%: CRITICAL (Not approved)
