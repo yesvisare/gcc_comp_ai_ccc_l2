@@ -1,0 +1,147 @@
+{
+  "sample_change_requests": [
+    {
+      "title": "Upgrade embedding model from ada-002 to ada-003",
+      "description": "Upgrade OpenAI embedding model to improve accuracy from 78% to 84%. Requires re-embedding all financial documents.",
+      "requestor": "engineer@company.com",
+      "technical_impact": "4 hours downtime to re-embed 500,000 documents. Requires vector database migration.",
+      "compliance_impact": "Affects PII processing and financial data handling. New model not yet approved under SOX controls. Requires compliance review and external audit notification.",
+      "business_impact": "Accuracy improvement from 78% to 84%. 50 business units affected. 4-hour maintenance window required.",
+      "affects_pii": true,
+      "affects_financial_data": true,
+      "affects_sox_controls": true,
+      "affects_gdpr": true,
+      "affects_dpdpa": false,
+      "is_emergency": false,
+      "expected_classification": "Normal - High Risk",
+      "expected_approvers": ["chief_architect", "head_of_security", "compliance_officer", "lead_devops_engineer"],
+      "expected_sla": "3 business days"
+    },
+    {
+      "title": "SSL certificate renewal for production API",
+      "description": "Renew SSL certificate expiring in 30 days for api.company.com",
+      "requestor": "devops@company.com",
+      "technical_impact": "Zero downtime. Automatic certificate rotation via cert-manager.",
+      "compliance_impact": "Maintains security controls. No compliance impact - routine maintenance.",
+      "business_impact": "No user impact. Prevents service disruption from expired certificate.",
+      "affects_pii": false,
+      "affects_financial_data": false,
+      "affects_sox_controls": false,
+      "affects_gdpr": false,
+      "affects_dpdpa": false,
+      "is_emergency": false,
+      "expected_classification": "Standard - Low Risk",
+      "expected_approvers": ["auto_approved"],
+      "expected_sla": "<1 day (auto-approved)"
+    },
+    {
+      "title": "Patch zero-day vulnerability in LangChain",
+      "description": "Critical security patch for CVE-2024-XXXXX affecting all RAG systems. Exploit actively used in the wild.",
+      "requestor": "ciso@company.com",
+      "technical_impact": "15-minute downtime to restart all RAG services with patched version. No data migration required.",
+      "compliance_impact": "Addresses critical security vulnerability. Failure to patch within 24 hours violates security policy and SOX 404 requirements.",
+      "business_impact": "15-minute outage affecting 50 business units. Alternative: Data breach affecting 10 million customer records.",
+      "affects_pii": true,
+      "affects_financial_data": true,
+      "affects_sox_controls": true,
+      "affects_gdpr": true,
+      "affects_dpdpa": true,
+      "is_emergency": true,
+      "expected_classification": "Emergency - Critical",
+      "expected_approvers": ["ciso", "vp_engineering"],
+      "expected_sla": "<2 hours"
+    },
+    {
+      "title": "Add new data source: Customer support tickets",
+      "description": "Integrate Zendesk support tickets into RAG knowledge base to improve customer service responses.",
+      "requestor": "product_manager@company.com",
+      "technical_impact": "New data ingestion pipeline. 200,000 tickets to embed (estimated 2 hours). No downtime for existing systems.",
+      "compliance_impact": "Support tickets contain PII (customer names, emails, phone numbers). Requires PII detection and redaction. GDPR Article 25 data minimization applies.",
+      "business_impact": "Improves customer service agent productivity by 20%. No user-facing impact during deployment.",
+      "affects_pii": true,
+      "affects_financial_data": false,
+      "affects_sox_controls": false,
+      "affects_gdpr": true,
+      "affects_dpdpa": true,
+      "is_emergency": false,
+      "expected_classification": "Normal - Medium Risk",
+      "expected_approvers": ["manager"],
+      "expected_sla": "1 business day"
+    },
+    {
+      "title": "Migrate RAG system from AWS Mumbai to AWS Frankfurt",
+      "description": "Migrate EU tenant data from AWS Mumbai to AWS Frankfurt for GDPR compliance (data residency requirements).",
+      "requestor": "compliance_officer@company.com",
+      "technical_impact": "8-hour migration window. Cross-region data transfer of 5TB. Requires blue-green deployment to maintain uptime.",
+      "compliance_impact": "CRITICAL: GDPR Article 45 requires EU data to be stored in EU. Current Mumbai storage violates GDPR. DPDPA Section 16 requires Indian data to stay in India. Must implement split architecture.",
+      "business_impact": "8-hour maintenance window for EU tenants. 15% cost increase due to higher Frankfurt pricing. Latency improvement for EU users (50ms reduction).",
+      "affects_pii": true,
+      "affects_financial_data": true,
+      "affects_sox_controls": false,
+      "affects_gdpr": true,
+      "affects_dpdpa": true,
+      "is_emergency": false,
+      "expected_classification": "Normal - High Risk",
+      "expected_approvers": ["chief_architect", "head_of_security", "compliance_officer", "lead_devops_engineer"],
+      "expected_sla": "3 business days"
+    }
+  ],
+  "rollback_scenarios": [
+    {
+      "change_id": "CHG-2025-1147",
+      "scenario": "Compliance test failure",
+      "baseline_metrics": {
+        "pii_detection_accuracy": 98.5,
+        "latency": 2.1,
+        "error_rate": 0.7,
+        "compliance_tests_passed": true
+      },
+      "post_deployment_metrics": {
+        "pii_detection_accuracy": 87.3,
+        "latency": 2.3,
+        "error_rate": 0.8,
+        "compliance_tests_passed": false
+      },
+      "expected_trigger": "compliance_test_failure",
+      "rollback_action": "Automatic rollback to ada-002 embedding model"
+    },
+    {
+      "change_id": "CHG-2025-1148",
+      "scenario": "Latency degraded >20%",
+      "baseline_metrics": {
+        "latency": 2.1,
+        "error_rate": 0.7,
+        "compliance_tests_passed": true
+      },
+      "post_deployment_metrics": {
+        "latency": 3.8,
+        "error_rate": 0.8,
+        "compliance_tests_passed": true
+      },
+      "expected_trigger": "metrics_degraded",
+      "rollback_action": "Automatic rollback due to 81% latency increase"
+    },
+    {
+      "change_id": "CHG-2025-1149",
+      "scenario": "Audit logs stopped recording",
+      "baseline_metrics": {
+        "audit_logs_recording": true,
+        "compliance_tests_passed": true
+      },
+      "post_deployment_metrics": {
+        "audit_logs_recording": false,
+        "audit_log_gap_minutes": 37,
+        "compliance_tests_passed": true
+      },
+      "expected_trigger": "security_compromised",
+      "rollback_action": "Immediate rollback + CISO notification + incident report"
+    }
+  ],
+  "metadata": {
+    "source": "GCC Compliance M4.3 Change Management",
+    "purpose": "Example change requests demonstrating Standard/Normal/Emergency classification",
+    "total_examples": 5,
+    "change_types_covered": ["Standard", "Normal", "Emergency"],
+    "risk_levels_covered": ["Low", "Medium", "High", "Critical"]
+  }
+}

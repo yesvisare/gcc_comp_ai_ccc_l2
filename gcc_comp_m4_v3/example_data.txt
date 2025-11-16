@@ -1,0 +1,217 @@
+Example Change Requests for L3 M4.3: Change Management & Compliance
+
+========================================
+EXAMPLE 1: Standard Change (Auto-Approved)
+========================================
+
+Title: SSL Certificate Renewal
+Description: Renew SSL certificate expiring in 30 days for api.company.com
+Change Type: STANDARD
+Risk Level: LOW
+Approvers: Auto-approved
+SLA: <1 day
+
+Why Standard?
+- Pre-approved change pattern (happens quarterly)
+- Zero compliance impact (maintains security controls)
+- Well-understood procedure with documented steps
+- No downtime or user impact
+
+========================================
+EXAMPLE 2: Normal Change - Medium Risk
+========================================
+
+Title: Add Customer Support Tickets Data Source
+Description: Integrate Zendesk support tickets into RAG knowledge base
+Change Type: NORMAL
+Risk Level: MEDIUM
+Approvers: Manager
+SLA: 1 business day
+
+Why Medium Risk?
+- Affects PII processing (customer names, emails in tickets)
+- GDPR Article 25 data minimization applies
+- Requires PII detection and redaction
+- Does not affect SOX controls or financial data
+
+Impact Assessment:
+- Technical: New data ingestion pipeline, 200K tickets to embed (2 hours)
+- Compliance: Requires PII detection with Presidio, GDPR consent verification
+- Business: 20% productivity improvement for customer service agents
+
+========================================
+EXAMPLE 3: Normal Change - High Risk
+========================================
+
+Title: Upgrade Embedding Model (ada-002 → ada-003)
+Description: Upgrade OpenAI embedding model to improve accuracy
+Change Type: NORMAL
+Risk Level: HIGH
+Approvers: CAB (Chief Architect, CISO, Compliance Officer, Lead DevOps)
+SLA: 3 business days
+
+Why High Risk?
+- Affects SOX 404 financial data controls
+- New model not yet approved by external auditors
+- Impacts PII processing (embeddings contain customer data)
+- 4-hour downtime to re-embed 500,000 documents
+
+Impact Assessment:
+- Technical: Re-embed all documents, vector database migration, 4-hour downtime
+- Compliance: Requires SOX control review, external audit notification, GDPR impact assessment
+- Business: Accuracy improvement 78% → 84%, affects 50 business units
+
+CAB Review Checklist:
+✓ Is new model validated for financial data? (No - requires validation)
+✓ Are rollback procedures tested? (Yes - can revert to ada-002)
+✓ Is compliance impact documented? (Yes - SOX, GDPR, DPDPA)
+✓ Is business justification sound? (Yes - 6% accuracy improvement)
+
+CAB Decision: Approved with conditions
+Conditions:
+1. Deploy to 10% canary (5 business units) first
+2. Monitor for 24 hours
+3. Verify compliance tests pass
+4. Notify external auditors before full rollout
+
+========================================
+EXAMPLE 4: Emergency Change
+========================================
+
+Title: Patch Zero-Day Vulnerability (CVE-2024-XXXXX)
+Description: Critical security patch for LangChain exploit actively used in wild
+Change Type: EMERGENCY
+Risk Level: CRITICAL
+Approvers: CISO + VP Engineering
+SLA: <2 hours
+
+Why Emergency?
+- Critical security vulnerability actively exploited
+- Failure to patch within 24 hours = SOX 404 violation
+- Alternative: Data breach affecting 10M customer records
+- Requires immediate action despite 15-minute outage
+
+Fast-Track Approval Process:
+1. CISO initiates emergency change request (email + Slack ping)
+2. VP Engineering reviews technical approach (10 minutes)
+3. Both approve via email/Slack (within 30 minutes)
+4. Deployment proceeds immediately
+5. Post-implementation review scheduled within 24 hours
+
+Post-Deployment:
+- Verify patch applied successfully
+- Run compliance tests (PII detection, encryption, audit logging)
+- Monitor for 48 hours
+- Document lessons learned
+- Update Standard change catalog (future patches pre-approved)
+
+========================================
+EXAMPLE 5: Rollback Scenario
+========================================
+
+Change ID: CHG-2025-1147
+Original Change: Upgrade embedding model (ada-002 → ada-003)
+Deployment: Friday 11 PM (maintenance window)
+
+Post-Deployment Monitoring (Saturday 12 AM):
+- Latency: 2.3s (baseline: 2.1s) ✓ Within 20% threshold
+- Error rate: 0.8% (baseline: 0.7%) ✓ Within 20% threshold
+- PII detection accuracy: 87.3% (baseline: 98.5%) ❌ FAILED
+
+ROLLBACK TRIGGERED: Compliance Test Failure
+
+Rollback Actions (Automated):
+1. Detect PII accuracy drop below 98% threshold (12:05 AM)
+2. Alert DevOps on-call engineer (12:05 AM)
+3. Execute automated rollback script (12:06 AM)
+   - Revert to ada-002 embedding service
+   - Restore vector database snapshot
+   - Verify all services healthy
+4. Rollback completed (12:18 AM) - Total: 13 minutes
+5. Verify compliance tests pass with ada-002 (12:20 AM)
+6. Notify stakeholders: Manager, CISO, Compliance Officer (12:25 AM)
+7. Log rollback to audit trail with trigger reason (12:30 AM)
+
+Root Cause Analysis (Monday):
+- ada-003 has different PII handling than ada-002
+- PII detection regex patterns tuned for ada-002 embeddings
+- New model requires updated PII detection rules
+
+Corrective Actions:
+1. Update PII detection to support ada-003
+2. Test in staging environment
+3. Resubmit change request with updated approach
+4. Add PII detection validation to pre-deployment checklist
+
+========================================
+CHANGE ADVISORY BOARD (CAB) COMPOSITION
+========================================
+
+CAB Members (7 roles):
+1. Chief Architect - Technical feasibility, scalability
+2. Head of Security / CISO - Security impact, vulnerabilities
+3. Compliance Officer - SOX, GDPR, DPDPA regulatory impact
+4. Lead DevOps Engineer - Operational impact, rollback readiness
+5. Business Representative - User impact, revenue risk
+6. Finance Representative - Financial reporting accuracy (for financial data changes)
+7. Legal Representative - Contract compliance, data residency (for data processing changes)
+
+CAB Meeting Schedule:
+- Regular: Every Wednesday 2 PM (reviews Normal - High Risk changes)
+- Emergency: On-demand within 2 hours (for Emergency changes)
+- Quorum: Minimum 4 members (must include Compliance Officer for regulatory changes)
+
+CAB Decision Types:
+✓ Approved - Deploy as planned
+✓ Approved with Conditions - Deploy with specific requirements (canary, monitoring)
+❌ Rejected - Do not deploy (compliance risk too high)
+⏸️ Request More Information - Need additional impact assessment
+
+========================================
+AUDIT TRAIL EXAMPLE
+========================================
+
+Change ID: CHG-2025-1147
+Change Title: Upgrade embedding model (ada-002 → ada-003)
+
+Audit Events:
+1. 2025-01-15 10:30:00 UTC | change_requested | actor: engineer@company.com
+   - Change type: NORMAL, Risk: HIGH
+   - Affects: PII, Financial Data, SOX Controls
+
+2. 2025-01-16 14:15:00 UTC | impact_assessment_completed | actor: engineer@company.com
+   - Technical impact: 4-hour downtime, re-embed 500K documents
+   - Compliance impact: SOX review required, external audit notification
+   - Business impact: 50 BUs affected, 78% → 84% accuracy
+
+3. 2025-01-18 15:00:00 UTC | cab_review_scheduled | actor: system
+   - CAB meeting: Wednesday 2025-01-18 @ 2 PM
+   - Attendees: Chief Architect, CISO, Compliance Officer, Lead DevOps
+
+4. 2025-01-18 15:45:00 UTC | change_approved | actor: chief_architect@company.com
+   - Conditions: Deploy to 10% canary, monitor 24 hours, verify compliance
+   - Approval timestamp: 2025-01-18 15:45:00 UTC
+
+5. 2025-01-20 23:00:00 UTC | implementation_started | actor: devops@company.com
+   - Deployment window: Friday 11 PM - Saturday 3 AM
+   - Canary group: 5 business units (10% of total)
+
+6. 2025-01-21 00:05:00 UTC | rollback_triggered | actor: system_automated
+   - Trigger: Compliance test failure (PII detection 87.3% < 98% threshold)
+   - Action: Automated rollback initiated
+
+7. 2025-01-21 00:18:00 UTC | rollback_completed | actor: system_automated
+   - Rollback duration: 13 minutes
+   - Compliance verified: PII detection 98.5% with ada-002
+
+8. 2025-01-23 10:00:00 UTC | post_implementation_review | actor: chief_architect@company.com
+   - Outcome: Rollback successful, compliance maintained
+   - Root cause: PII detection rules not updated for ada-003
+   - Corrective action: Update PII detection, retest in staging
+
+9. 2025-01-23 10:30:00 UTC | change_closed | actor: chief_architect@company.com
+   - Status: ROLLED_BACK
+   - Lessons learned: Always validate PII detection in staging before production
+
+Audit Trail Retention: 7 years (SOX requirement)
+Immutability: Write-once, no updates or deletes allowed

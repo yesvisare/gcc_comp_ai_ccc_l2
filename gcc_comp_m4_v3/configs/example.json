@@ -1,0 +1,32 @@
+{
+  "change_management": {
+    "approval_sla_hours": {
+      "standard": 1,
+      "normal": 72,
+      "emergency": 2
+    },
+    "rollback_thresholds": {
+      "latency_degradation_percent": 20,
+      "error_rate_degradation_percent": 20,
+      "pii_detection_min_accuracy": 98.0,
+      "support_tickets_per_hour_max": 10,
+      "audit_log_gap_minutes_max": 0
+    },
+    "cab_members": [
+      "chief_architect",
+      "head_of_security",
+      "compliance_officer",
+      "lead_devops_engineer",
+      "business_representative",
+      "finance_representative",
+      "legal_representative"
+    ],
+    "standard_changes": [
+      "ssl_certificate_renewal",
+      "security_patch_installation",
+      "log_retention_config_update",
+      "backup_schedule_update",
+      "monitoring_threshold_adjustment"
+    ]
+  }
+}
