@@ -1,0 +1,66 @@
+{
+  "oauth_providers": {
+    "okta": {
+      "authorization_endpoint": "https://dev-{org-id}.okta.com/oauth2/default/v1/authorize",
+      "token_endpoint": "https://dev-{org-id}.okta.com/oauth2/default/v1/token",
+      "userinfo_endpoint": "https://dev-{org-id}.okta.com/oauth2/default/v1/userinfo",
+      "issuer": "https://dev-{org-id}.okta.com/oauth2/default"
+    },
+    "azure_ad": {
+      "authorization_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize",
+      "token_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token",
+      "userinfo_endpoint": "https://graph.microsoft.com/oidc/userinfo",
+      "issuer": "https://login.microsoftonline.com/{tenant}/v2.0"
+    },
+    "auth0": {
+      "authorization_endpoint": "https://{domain}.auth0.com/authorize",
+      "token_endpoint": "https://{domain}.auth0.com/oauth/token",
+      "userinfo_endpoint": "https://{domain}.auth0.com/userinfo",
+      "issuer": "https://{domain}.auth0.com/"
+    }
+  },
+  "rbac_roles": {
+    "Admin": {
+      "permissions": ["read", "write", "delete", "manage_users", "manage_tenants"],
+      "description": "Full system access with user and tenant management",
+      "requires_mfa": true
+    },
+    "Developer": {
+      "permissions": ["read", "write", "execute"],
+      "description": "Engineers building on the platform",
+      "requires_mfa": false
+    },
+    "Analyst": {
+      "permissions": ["read", "query"],
+      "description": "Business analysts running reports",
+      "requires_mfa": false
+    },
+    "Viewer": {
+      "permissions": ["read"],
+      "description": "Read-only stakeholders",
+      "requires_mfa": false
+    }
+  },
+  "session_settings": {
+    "default_timeout_seconds": 3600,
+    "max_concurrent_sessions_per_user": 3,
+    "enable_ip_validation": true,
+    "enable_user_agent_validation": false,
+    "session_renewal_window_seconds": 300
+  },
+  "security_policies": {
+    "token_expiration_minutes": 60,
+    "refresh_token_expiration_days": 7,
+    "password_reset_token_expiration_minutes": 15,
+    "mfa_code_expiration_seconds": 30,
+    "max_login_attempts": 5,
+    "lockout_duration_minutes": 15
+  },
+  "compliance_settings": {
+    "audit_log_retention_days": 365,
+    "require_mfa_for_roles": ["Admin"],
+    "enforce_password_complexity": true,
+    "min_password_length": 12,
+    "require_password_rotation_days": 90
+  }
+}

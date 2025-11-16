@@ -1,0 +1,50 @@
+# L3 M2: Security_Access_Control - Dependencies
+# Authentication & Identity Management for Multi-Tenant RAG Systems
+
+# Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# OAuth 2.0 / OIDC
+authlib==1.3.0
+requests==2.31.0
+
+# JWT Token Handling
+PyJWT[crypto]==2.8.0
+cryptography==41.0.7
+
+# Session Management
+redis==5.0.1
+hiredis==2.2.3  # Redis parser for better performance
+
+# Password Hashing (for local auth if needed)
+passlib[bcrypt]==1.7.4
+
+# Database (PostgreSQL for user/tenant metadata)
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.23
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Utilities
+python-multipart==0.0.6  # For form data parsing
+
+# Development & Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+httpx==0.25.2  # For FastAPI testing
+black==23.11.0
+flake8==6.1.0
+mypy==1.7.1
+
+# Jupyter Notebooks
+jupyter==1.0.0
+ipykernel==6.26.0
+notebook==7.0.6
+
+# Documentation
+mkdocs==1.5.3  # Optional: for documentation generation
