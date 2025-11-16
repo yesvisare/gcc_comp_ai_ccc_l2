@@ -1,0 +1,27 @@
+{
+  "system_name": "GCC RAG System",
+  "components": [
+    "FastAPI Application",
+    "Pinecone Vector Database",
+    "OpenAI LLM Integration",
+    "Authentication Layer",
+    "Authorization Service",
+    "Audit Logging"
+  ],
+  "security_settings": {
+    "max_query_length": 1000,
+    "rate_limit_per_minute": 100,
+    "session_timeout_minutes": 15
+  },
+  "threat_model_config": {
+    "min_cvss_for_blocking": 7.0,
+    "critical_cvss_threshold": 9.0,
+    "require_mitigation_plan": true
+  },
+  "testing_config": {
+    "enable_sast": true,
+    "enable_dast": true,
+    "enable_prompt_injection_tests": true,
+    "enable_cross_tenant_tests": true
+  }
+}
