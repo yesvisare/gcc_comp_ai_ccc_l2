@@ -1,0 +1,116 @@
+# Sample Queries for L3 M2.2: Authorization & Multi-Tenant Access Control
+
+## Finance Namespace Queries
+Show Q3 revenue projections for Finance department
+Retrieve financial statements from Finance namespace
+Display Q4 budget allocations
+Show revenue trends for 2024
+Query expense reports by department
+
+## HR Namespace Queries
+List all employee policy documents in HR namespace
+Query hiring policies from HR namespace
+Show employee onboarding procedures
+Display performance review templates
+Retrieve compensation guidelines
+
+## Legal Namespace Queries
+Display contract templates for Legal team
+Show regulatory filings from Legal namespace
+Query compliance requirements for GCC
+Retrieve vendor agreement templates
+Display intellectual property guidelines
+
+## Compliance & Audit Queries
+Show compliance audit logs for last quarter
+Display admin user management records
+Query access control policy changes
+Show failed authorization attempts
+Retrieve audit trail for sensitive documents
+
+## Test Scenarios
+
+### Scenario 1: Admin Full Access
+User: alice@company.com (admin, admin-prod)
+Query: Show Q3 revenue projections
+Target: finance-prod
+Expected: ALLOWED (admin has full access)
+
+### Scenario 2: Analyst Same Namespace
+User: bob@company.com (analyst, finance-prod)
+Query: Show Q3 revenue projections
+Target: finance-prod
+Expected: ALLOWED (accessing own namespace)
+
+### Scenario 3: Analyst Cross-Tenant (Zero Leakage Test)
+User: bob@company.com (analyst, finance-prod)
+Query: List employee policies
+Target: hr-prod
+Expected: DENIED (cross-tenant access blocked)
+
+### Scenario 4: Compliance Officer Read-All
+User: david@company.com (compliance_officer, audit-prod)
+Query: Show compliance audit logs
+Target: finance-prod
+Expected: ALLOWED (compliance has read-all access)
+
+## ABAC Context Examples
+
+### Context 1: US Business Hours
+{
+  "location": "US",
+  "time": "09:00-17:00",
+  "ip_address": "10.0.1.50",
+  "device_type": "corporate_laptop"
+}
+
+### Context 2: India Business Hours
+{
+  "location": "IN",
+  "time": "09:30-18:30",
+  "ip_address": "172.16.2.100",
+  "device_type": "corporate_laptop"
+}
+
+### Context 3: After Hours (May Trigger ABAC Denial)
+{
+  "location": "US",
+  "time": "23:00",
+  "ip_address": "192.168.1.100",
+  "device_type": "personal_device"
+}
+
+## Sample Documents (Metadata)
+
+### Finance Documents
+- fin-001: Q3 2024 Revenue Projections (confidential)
+- fin-002: Q4 2024 Budget Allocations (confidential)
+- fin-003: Annual Financial Report 2023 (confidential)
+
+### HR Documents
+- hr-001: Employee Onboarding Policy 2024 (internal)
+- hr-002: Remote Work Guidelines (internal)
+- hr-003: Performance Review Template (internal)
+
+### Legal Documents
+- legal-001: Standard Contract Template v2.1 (confidential)
+- legal-002: Vendor Agreement Template (confidential)
+- legal-003: IP Assignment Agreement (confidential)
+
+## Expected Authorization Matrix
+
+| User Role          | User Namespace | Target Namespace | Result  | Reason                      |
+|--------------------|----------------|------------------|---------|-----------------------------|
+| admin              | admin-prod     | finance-prod     | ALLOWED | Admin full access           |
+| admin              | admin-prod     | hr-prod          | ALLOWED | Admin full access           |
+| analyst            | finance-prod   | finance-prod     | ALLOWED | Own namespace               |
+| analyst            | finance-prod   | hr-prod          | DENIED  | Cross-tenant blocked        |
+| analyst            | hr-prod        | finance-prod     | DENIED  | Cross-tenant blocked        |
+| compliance_officer | audit-prod     | finance-prod     | ALLOWED | Compliance read-all         |
+| compliance_officer | audit-prod     | hr-prod          | ALLOWED | Compliance read-all         |
+
+## Notes
+- All queries should respect namespace isolation
+- Cross-tenant access attempts should be logged in audit trail
+- ABAC policies may further restrict access based on context
+- Audit logs are immutable with 7-year retention requirement

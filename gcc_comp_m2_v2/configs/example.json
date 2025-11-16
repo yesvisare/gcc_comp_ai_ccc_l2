@@ -1,0 +1,36 @@
+{
+  "application": {
+    "name": "GCC Compliance M2.2 - Authorization & Multi-Tenant Access Control",
+    "version": "1.0.0",
+    "environment": "development"
+  },
+  "rbac": {
+    "roles": ["admin", "analyst", "compliance_officer"],
+    "default_role": "analyst"
+  },
+  "namespaces": {
+    "available": [
+      "finance-prod",
+      "hr-prod",
+      "legal-prod",
+      "admin-prod",
+      "audit-prod"
+    ],
+    "default": "finance-prod"
+  },
+  "abac": {
+    "enabled": false,
+    "opa_endpoint": "http://localhost:8181",
+    "policy_path": "/v1/data/gcc/authz/allow"
+  },
+  "audit": {
+    "enabled": true,
+    "retention_days": 2555,
+    "immutable": true
+  },
+  "query_settings": {
+    "timeout_seconds": 30,
+    "max_results": 100,
+    "enable_caching": true
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "queries": [
+    "Show Q3 revenue projections for Finance department",
+    "List all employee policy documents in HR namespace",
+    "Display contract templates for Legal team",
+    "Show compliance audit logs for last quarter",
+    "Retrieve financial statements from Finance namespace",
+    "Query hiring policies from HR namespace",
+    "Show regulatory filings from Legal namespace",
+    "Display admin user management records"
+  ],
+  "users": [
+    {
+      "email": "alice@company.com",
+      "role": "admin",
+      "namespace": "admin-prod",
+      "location": "US",
+      "permissions": [
+        "create_namespace",
+        "delete_namespace",
+        "manage_users",
+        "query_all_namespaces",
+        "manage_policies"
+      ]
+    },
+    {
+      "email": "bob@company.com",
+      "role": "analyst",
+      "namespace": "finance-prod",
+      "location": "US",
+      "permissions": [
+        "query_own_namespace"
+      ]
+    },
+    {
+      "email": "carol@company.com",
+      "role": "analyst",
+      "namespace": "hr-prod",
+      "location": "IN",
+      "permissions": [
+        "query_own_namespace"
+      ]
+    },
+    {
+      "email": "david@company.com",
+      "role": "compliance_officer",
+      "namespace": "audit-prod",
+      "location": "US",
+      "permissions": [
+        "query_all_namespaces",
+        "view_audit_logs",
+        "export_audit_logs"
+      ]
+    }
+  ],
+  "namespaces": [
+    {
+      "name": "finance-prod",
+      "business_unit": "Finance",
+      "region": "US",
+      "document_count": 1500,
+      "classification": "confidential"
+    },
+    {
+      "name": "hr-prod",
+      "business_unit": "Human Resources",
+      "region": "IN",
+      "document_count": 800,
+      "classification": "internal"
+    },
+    {
+      "name": "legal-prod",
+      "business_unit": "Legal",
+      "region": "US",
+      "document_count": 600,
+      "classification": "confidential"
+    },
+    {
+      "name": "admin-prod",
+      "business_unit": "Administration",
+      "region": "US",
+      "document_count": 300,
+      "classification": "internal"
+    }
+  ],
+  "sample_documents": [
+    {
+      "id": "fin-001",
+      "namespace": "finance-prod",
+      "title": "Q3 2024 Revenue Projections",
+      "classification": "confidential",
+      "business_unit": "Finance"
+    },
+    {
+      "id": "hr-001",
+      "namespace": "hr-prod",
+      "title": "Employee Onboarding Policy 2024",
+      "classification": "internal",
+      "business_unit": "Human Resources"
+    },
+    {
+      "id": "legal-001",
+      "namespace": "legal-prod",
+      "title": "Standard Contract Template v2.1",
+      "classification": "confidential",
+      "business_unit": "Legal"
+    }
+  ],
+  "abac_contexts": [
+    {
+      "location": "US",
+      "time": "business_hours",
+      "ip_range": "10.0.0.0/8",
+      "device_type": "corporate_laptop"
+    },
+    {
+      "location": "IN",
+      "time": "business_hours",
+      "ip_range": "172.16.0.0/12",
+      "device_type": "corporate_laptop"
+    }
+  ],
+  "test_scenarios": [
+    {
+      "description": "Admin accessing Finance namespace",
+      "user": "alice@company.com",
+      "role": "admin",
+      "user_namespace": "admin-prod",
+      "target_namespace": "finance-prod",
+      "expected_result": "allowed"
+    },
+    {
+      "description": "Analyst accessing own namespace",
+      "user": "bob@company.com",
+      "role": "analyst",
+      "user_namespace": "finance-prod",
+      "target_namespace": "finance-prod",
+      "expected_result": "allowed"
+    },
+    {
+      "description": "Analyst attempting cross-tenant access",
+      "user": "bob@company.com",
+      "role": "analyst",
+      "user_namespace": "finance-prod",
+      "target_namespace": "hr-prod",
+      "expected_result": "denied"
+    },
+    {
+      "description": "Compliance officer accessing HR namespace",
+      "user": "david@company.com",
+      "role": "compliance_officer",
+      "user_namespace": "audit-prod",
+      "target_namespace": "hr-prod",
+      "expected_result": "allowed"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generated": "2025-01-16",
+    "source": "Augmented_GCC_Compliance_M2_2_Authorization_Multi.md",
+    "purpose": "demonstration_and_testing"
+  }
+}
