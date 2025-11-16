@@ -1,0 +1,201 @@
+L3 M1.4: Compliance Documentation & Evidence - Sample Data
+
+================================================================================
+AUDIT EVENT EXAMPLES
+================================================================================
+
+Event 1: Document Access
+- Event Type: document_accessed
+- User: analyst_jane_doe
+- Resource: financial_report_q3_2024.pdf
+- Action: read
+- Metadata: IP=192.168.1.105, sensitivity=confidential
+
+Event 2: PII Access
+- Event Type: pii_accessed
+- User: data_analyst_alice_brown
+- Resource: customer_database_table_users
+- Action: query
+- Metadata: rows_accessed=1250, purpose=marketing_analysis
+
+Event 3: Configuration Change
+- Event Type: config_changed
+- User: admin_bob_wilson
+- Resource: rag_system_access_control
+- Action: update_permissions
+- Metadata: affected_users=[jane_doe, alice_brown]
+
+Event 4: Security Alert
+- Event Type: security_alert
+- User: system_monitor
+- Resource: intrusion_detection_system
+- Action: alert_raised
+- Metadata: alert_type=suspicious_login, severity=high
+
+================================================================================
+COMPLIANCE REPORT QUERIES
+================================================================================
+
+1. Generate SOX Section 404 compliance report for fiscal Q3 2024
+2. Export evidence for SOC 2 security controls (CC6.1, CC6.2, CC7.2)
+3. List all audit trail entries for specific user (analyst_jane_doe)
+4. Show evidence collection status for last 30 days
+5. Generate vendor risk assessment for third-party AI providers (OpenAI, Pinecone)
+6. Verify hash chain integrity for all audit events in database
+7. Export GDPR Article 30 records of processing activities
+8. Generate DPDPA breach notification report (last 6 hours)
+
+================================================================================
+IMMUTABLE AUDIT TRAIL ARCHITECTURE
+================================================================================
+
+Hash Chain Example:
+
+Event 1:
+  Data: {event_type: "user_login", user_id: "alice", timestamp: "2024-09-15T10:00:00"}
+  Previous Hash: null
+  Current Hash: SHA256(event_data + null) = a1b2c3d4e5f6...
+
+Event 2:
+  Data: {event_type: "document_accessed", user_id: "alice", timestamp: "2024-09-15T10:05:00"}
+  Previous Hash: a1b2c3d4e5f6...
+  Current Hash: SHA256(event_data + a1b2c3d4e5f6...) = f6e5d4c3b2a1...
+
+Event 3:
+  Data: {event_type: "user_logout", user_id: "alice", timestamp: "2024-09-15T11:00:00"}
+  Previous Hash: f6e5d4c3b2a1...
+  Current Hash: SHA256(event_data + f6e5d4c3b2a1...) = 1a2b3c4d5e6f...
+
+Tampering Detection:
+- If Event 2 is modified, its hash changes from f6e5d4c3b2a1... to XYZ123...
+- Event 3's previous_hash (f6e5d4c3b2a1...) no longer matches Event 2's current_hash (XYZ123...)
+- Integrity verification FAILS with error: "Hash chain broken at event 3"
+
+================================================================================
+EVIDENCE COLLECTION EXAMPLES
+================================================================================
+
+System Evidence:
+- Audit logs (PostgreSQL export with hash chain verification)
+- Database schemas (pg_dump of audit_events table)
+- Network diagrams (VPC topology, security groups)
+- Access control matrices (IAM policies, RBAC configurations)
+
+Process Evidence:
+- Data Retention Policy v2.0 (approved 2024-01-15)
+- Access Control Policy v1.5 (approved 2024-02-01)
+- Incident Response Playbook v3.0 (approved 2024-03-10)
+- Vendor Risk Assessment Template v1.2 (approved 2024-04-01)
+
+Outcome Evidence:
+- Penetration test report (2024-09-01, result: PASS, 0 critical findings)
+- Vulnerability scan results (2024-09-15, result: PASS, 2 medium findings remediated)
+- PII detection accuracy metrics (2024-Q3, precision: 98.5%, recall: 97.2%)
+- Business continuity test (2024-08-20, RTO: 4 hours, RPO: 1 hour, result: PASS)
+
+================================================================================
+VENDOR RISK ASSESSMENT EXAMPLES
+================================================================================
+
+Vendor: OpenAI
+Services: GPT-4, Embeddings API, Fine-tuning
+Frameworks: SOC 2, GDPR
+Risk Score: 0.83 / 1.00 (LOW)
+Criteria:
+  - Data Residency: 0.7 (US-only data centers, no EU option)
+  - SOC 2 Certified: 1.0 (SOC 2 Type II certified, annual audit)
+  - GDPR Compliant: 0.8 (DPA available, standard contractual clauses)
+  - Incident History: 0.9 (No major breaches, transparent incident response)
+Recommendations:
+  - Annual reassessment recommended
+  - Maintain current monitoring
+  - Review DPA annually for GDPR changes
+
+Vendor: Pinecone
+Services: Vector Database, Hybrid Search
+Frameworks: SOC 2, GDPR, ISO 27001
+Risk Score: 0.97 / 1.00 (LOW)
+Criteria:
+  - Data Residency: 0.9 (Multi-region support, EU data residency available)
+  - SOC 2 Certified: 1.0 (SOC 2 Type II certified)
+  - GDPR Compliant: 1.0 (EU data residency, GDPR-compliant DPA)
+  - Incident History: 1.0 (No reported incidents, strong security posture)
+Recommendations:
+  - Annual reassessment recommended
+  - Maintain current monitoring
+  - Excellent vendor choice for compliance-sensitive workloads
+
+================================================================================
+COMPLIANCE FRAMEWORKS MAPPING
+================================================================================
+
+SOX Section 404 (Sarbanes-Oxley Act)
+- Control: ITGC-01 (Access Controls)
+  Evidence: Audit logs showing user authentication and authorization
+- Control: ITGC-02 (Change Management)
+  Evidence: Config change logs with approval workflow
+- Control: ITGC-03 (Data Backup and Recovery)
+  Evidence: S3 Object Lock retention policies (7 years)
+- Control: ITGC-04 (Incident Response)
+  Evidence: Security alert logs and incident response playbook
+
+SOC 2 Trust Service Criteria
+- CC6.1: Logical and Physical Access Controls
+  Evidence: User login/logout events, failed authentication attempts
+- CC6.2: Prior to Issuing Credentials
+  Evidence: User provisioning logs with approval workflow
+- CC6.3: Provisioning and Modification
+  Evidence: Permission change events with before/after states
+- CC7.2: Detection of Security Events
+  Evidence: Security alert logs, intrusion detection events
+
+ISO 27001 Controls
+- A.12.4.1: Event Logging
+  Evidence: Comprehensive audit trail with hash chain integrity
+- A.18.1.4: Privacy and Protection of PII
+  Evidence: PII access logs with purpose and data minimization checks
+
+GDPR Requirements
+- Article 30: Records of Processing Activities
+  Evidence: Audit logs categorized by data processing purpose
+- Article 32: Security of Processing
+  Evidence: Hash-chained immutable audit trail, encryption at rest/transit
+
+DPDPA (India Digital Personal Data Protection Act 2023)
+- Section 8: Breach Notification (6 hours)
+  Evidence: Security alert logs with timestamps, automated breach detection
+- Section 10: Consent Management
+  Evidence: User consent logs with opt-in/opt-out tracking
+
+================================================================================
+COMMON FAILURE SCENARIOS
+================================================================================
+
+Failure 1: Missing Audit Logs During Infrastructure Migration
+Symptom: Gaps in audit trail during Q2 2024 (migration from on-prem to AWS)
+Root Cause: Logs stored on ephemeral EC2 instance storage, lost during termination
+Solution: Daily S3 export with Object Lock (2555-day retention)
+
+Failure 2: Auditor Questions Log Integrity
+Symptom: Auditor asks "How do I know logs haven't been modified?"
+Root Cause: Logs in mutable database, no cryptographic proof
+Solution: SHA-256 hash chaining (tamper-evident, mathematically provable)
+
+Failure 3: 2-4 Week Turnaround for Audit Requests
+Symptom: Manual evidence collection delays audit by weeks
+Root Cause: No automated export, evidence scattered across systems
+Solution: Daily automated evidence collection to S3
+
+Failure 4: Policy Version Chaos
+Symptom: Multiple conflicting policy versions in wikis/SharePoint
+Root Cause: No version control, unclear which version was active when
+Solution: Git-based policy repository with compliance mapping
+
+Failure 5: No Vendor Risk Assessment
+Symptom: Auditor asks about third-party vendor compliance, team scrambles
+Root Cause: Ad-hoc vendor selection, no compliance vetting
+Solution: Structured vendor risk assessment before procurement
+
+================================================================================
+END OF SAMPLE DATA
+================================================================================

@@ -1,0 +1,114 @@
+{
+  "audit_events": [
+    {
+      "event_type": "document_accessed",
+      "user_id": "analyst_jane_doe",
+      "resource_id": "financial_report_q3_2024.pdf",
+      "action": "read",
+      "metadata": {
+        "ip_address": "192.168.1.105",
+        "sensitivity_level": "confidential",
+        "department": "finance"
+      }
+    },
+    {
+      "event_type": "document_modified",
+      "user_id": "compliance_officer_john_smith",
+      "resource_id": "compliance_policy_v2.pdf",
+      "action": "update",
+      "metadata": {
+        "ip_address": "192.168.1.110",
+        "changes": "Added DPDPA requirements",
+        "approval_status": "pending"
+      }
+    },
+    {
+      "event_type": "pii_accessed",
+      "user_id": "data_analyst_alice_brown",
+      "resource_id": "customer_database_table_users",
+      "action": "query",
+      "metadata": {
+        "ip_address": "192.168.1.120",
+        "query_type": "SELECT",
+        "rows_accessed": 1250,
+        "purpose": "marketing_campaign_analysis"
+      }
+    },
+    {
+      "event_type": "config_changed",
+      "user_id": "admin_bob_wilson",
+      "resource_id": "rag_system_access_control",
+      "action": "update_permissions",
+      "metadata": {
+        "ip_address": "192.168.1.50",
+        "change_type": "role_assignment",
+        "affected_users": ["jane_doe", "alice_brown"],
+        "new_roles": ["data_analyst", "compliance_viewer"]
+      }
+    },
+    {
+      "event_type": "security_alert",
+      "user_id": "system_monitor",
+      "resource_id": "intrusion_detection_system",
+      "action": "alert_raised",
+      "metadata": {
+        "alert_type": "suspicious_login_attempt",
+        "source_ip": "203.0.113.45",
+        "target_user": "admin_account",
+        "severity": "high"
+      }
+    }
+  ],
+  "compliance_queries": [
+    "Generate SOX 404 compliance report for Q3 2024",
+    "Export evidence for SOC 2 security controls (CC6.1, CC7.2)",
+    "List all audit trail entries for user analyst_jane_doe in September 2024",
+    "Show evidence collection status for last 30 days",
+    "Generate vendor risk assessment for OpenAI",
+    "Verify hash chain integrity for all audit events",
+    "Export GDPR compliance evidence for data subject request",
+    "Generate DPDPA breach notification report (last 6 hours)"
+  ],
+  "vendor_assessments": [
+    {
+      "vendor_name": "OpenAI",
+      "services_used": ["GPT-4", "Embeddings API", "Fine-tuning"],
+      "compliance_frameworks": ["soc2", "gdpr"],
+      "risk_criteria": {
+        "data_residency": {"weight": 0.3, "score": 0.7, "note": "US-only data centers"},
+        "soc2_certified": {"weight": 0.25, "score": 1.0, "note": "SOC 2 Type II certified"},
+        "gdpr_compliant": {"weight": 0.25, "score": 0.8, "note": "DPA available"},
+        "incident_history": {"weight": 0.2, "score": 0.9, "note": "No major breaches"}
+      }
+    },
+    {
+      "vendor_name": "Pinecone",
+      "services_used": ["Vector Database", "Hybrid Search"],
+      "compliance_frameworks": ["soc2", "gdpr", "iso27001"],
+      "risk_criteria": {
+        "data_residency": {"weight": 0.3, "score": 0.9, "note": "Multi-region support"},
+        "soc2_certified": {"weight": 0.25, "score": 1.0, "note": "SOC 2 Type II certified"},
+        "gdpr_compliant": {"weight": 0.25, "score": 1.0, "note": "EU data residency available"},
+        "incident_history": {"weight": 0.2, "score": 1.0, "note": "No reported incidents"}
+      }
+    },
+    {
+      "vendor_name": "AWS (Amazon Web Services)",
+      "services_used": ["S3", "RDS", "Lambda"],
+      "compliance_frameworks": ["sox", "soc2", "iso27001", "gdpr", "hipaa"],
+      "risk_criteria": {
+        "data_residency": {"weight": 0.3, "score": 1.0, "note": "Global regions with residency controls"},
+        "soc2_certified": {"weight": 0.25, "score": 1.0, "note": "SOC 1, 2, 3 certified"},
+        "gdpr_compliant": {"weight": 0.25, "score": 1.0, "note": "GDPR-compliant DPA"},
+        "incident_history": {"weight": 0.2, "score": 0.95, "note": "Rare incidents, excellent transparency"}
+      }
+    }
+  ],
+  "metadata": {
+    "source": "compliance_evidence_examples",
+    "purpose": "demonstration",
+    "frameworks": ["SOX", "SOC2", "ISO27001", "GDPR", "DPDPA"],
+    "generated_date": "2024-09-15T12:00:00Z",
+    "version": "1.0.0"
+  }
+}
