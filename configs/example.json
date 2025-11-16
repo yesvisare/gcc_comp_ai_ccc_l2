@@ -1,0 +1,283 @@
+{
+  "data_classification": {
+    "sensitivity_levels": [
+      "public",
+      "internal",
+      "confidential",
+      "restricted"
+    ],
+    "pii_types": [
+      "email",
+      "ssn",
+      "phone",
+      "credit_card",
+      "iban",
+      "medical_license",
+      "passport",
+      "drivers_license"
+    ],
+    "phi_indicators": [
+      "diagnosis",
+      "medication",
+      "patient",
+      "treatment",
+      "medical record",
+      "insurance"
+    ],
+    "financial_indicators": [
+      "invoice",
+      "payment",
+      "account number",
+      "transaction",
+      "wire transfer",
+      "swift code"
+    ],
+    "presidio_config": {
+      "enabled": true,
+      "spacy_model": "en_core_web_lg",
+      "supported_languages": ["en"],
+      "confidence_threshold": 0.7
+    }
+  },
+  "retention_policies": {
+    "hr_records": {
+      "retention_days": 2555,
+      "retention_years": 7,
+      "regulation": "FLSA, EEOC",
+      "reason": "Legal defense post-termination",
+      "auto_delete": true,
+      "airflow_dag": "retention_hr_records_dag",
+      "cron_schedule": "0 2 * * *"
+    },
+    "financial_statements": {
+      "retention_days": 3650,
+      "retention_years": 10,
+      "regulation": "SOX 802",
+      "reason": "Audit requirements",
+      "auto_delete": true,
+      "airflow_dag": "retention_financial_dag",
+      "cron_schedule": "0 3 * * *"
+    },
+    "medical_records": {
+      "retention_days": 2555,
+      "retention_years": 7,
+      "regulation": "HIPAA",
+      "reason": "Patient care continuity",
+      "auto_delete": true,
+      "airflow_dag": "retention_medical_dag",
+      "cron_schedule": "0 4 * * *"
+    },
+    "marketing_data": {
+      "retention_days": 30,
+      "retention_years": 0.08,
+      "regulation": "GDPR minimization",
+      "reason": "Campaign lifecycle",
+      "auto_delete": true,
+      "airflow_dag": "retention_marketing_dag",
+      "cron_schedule": "0 1 * * *"
+    },
+    "audit_logs": {
+      "retention_days": 2555,
+      "retention_years": 7,
+      "regulation": "SOX, GDPR",
+      "reason": "Compliance verification",
+      "auto_delete": false,
+      "airflow_dag": "retention_audit_logs_dag",
+      "cron_schedule": "0 5 * * *"
+    },
+    "pii_general": {
+      "retention_days": 1095,
+      "retention_years": 3,
+      "regulation": "GDPR minimization",
+      "reason": "Data minimization principle",
+      "auto_delete": true,
+      "airflow_dag": "retention_pii_dag",
+      "cron_schedule": "0 2 30 * *"
+    },
+    "public_data": {
+      "retention_days": -1,
+      "retention_years": -1,
+      "regulation": "None",
+      "reason": "Indefinite retention",
+      "auto_delete": false,
+      "airflow_dag": null,
+      "cron_schedule": null
+    }
+  },
+  "gdpr_settings": {
+    "erasure_deadline_days": 30,
+    "verification_required": true,
+    "legal_exceptions": [
+      "compliance_with_legal_obligation",
+      "public_interest_official_authority",
+      "public_health_interest",
+      "archiving_research_statistics",
+      "legal_claims_defense",
+      "freedom_of_expression"
+    ],
+    "article_17_workflow": {
+      "steps": [
+        "validate_request",
+        "check_legal_exceptions",
+        "revoke_consents",
+        "identify_data_locations",
+        "execute_deletion",
+        "verify_deletion",
+        "generate_certificate",
+        "notify_user"
+      ],
+      "systems_to_delete": [
+        "vector_database",
+        "document_store",
+        "application_logs",
+        "backup_systems",
+        "cache_layer",
+        "generation_history",
+        "analytics_database"
+      ]
+    }
+  },
+  "data_residency": {
+    "regions": {
+      "eu": {
+        "aws_region": "eu-central-1",
+        "location": "Frankfurt, Germany",
+        "regulation": "GDPR Article 44",
+        "allowed_regions": ["eu-central-1", "eu-west-1"],
+        "cross_border_requirements": "Adequacy decision or Standard Contractual Clauses (SCCs)"
+      },
+      "india": {
+        "aws_region": "ap-south-1",
+        "location": "Mumbai, India",
+        "regulation": "DPDPA 2023",
+        "allowed_regions": ["ap-south-1"],
+        "cross_border_requirements": "Explicit user consent for sensitive data transfer"
+      },
+      "us": {
+        "aws_region": "us-east-1",
+        "location": "N. Virginia, USA",
+        "regulation": "None (US-specific)",
+        "allowed_regions": ["us-east-1", "us-west-2"],
+        "cross_border_requirements": "Generally unrestricted for most data types"
+      }
+    },
+    "country_mapping": {
+      "DE": "eu",
+      "FR": "eu",
+      "IT": "eu",
+      "ES": "eu",
+      "NL": "eu",
+      "BE": "eu",
+      "AT": "eu",
+      "SE": "eu",
+      "IN": "india",
+      "US": "us"
+    }
+  },
+  "consent_management": {
+    "legal_bases": [
+      "consent",
+      "contract",
+      "legal_obligation",
+      "vital_interests",
+      "public_task",
+      "legitimate_interest"
+    ],
+    "consent_requirements": {
+      "freely_given": true,
+      "specific": true,
+      "informed": true,
+      "unambiguous": true,
+      "withdrawable": true
+    },
+    "data_processing_purposes": [
+      "RAG query processing",
+      "Analytics and reporting",
+      "Service improvement",
+      "Marketing campaigns",
+      "Legal compliance",
+      "Security monitoring"
+    ],
+    "response_time_sla_ms": 50
+  },
+  "lineage_tracking": {
+    "stages": [
+      "document_upload",
+      "chunking",
+      "embedding",
+      "vector_storage",
+      "retrieval",
+      "generation",
+      "caching",
+      "analytics"
+    ],
+    "audit_retention_days": 2555,
+    "immutable_logs": true,
+    "schema": {
+      "source_id": "string",
+      "chunk_id": "string",
+      "embedding_id": "string",
+      "retrieval_id": "string",
+      "generation_id": "string",
+      "timestamp": "ISO 8601",
+      "user_id": "string",
+      "metadata": "object"
+    }
+  },
+  "access_control": {
+    "groups": {
+      "public": {
+        "access_level": "read",
+        "data_types": ["public"]
+      },
+      "all_employees": {
+        "access_level": "read",
+        "data_types": ["public", "internal"]
+      },
+      "hr_director": {
+        "access_level": "read_write",
+        "data_types": ["public", "internal", "confidential", "pii"]
+      },
+      "finance_team": {
+        "access_level": "read_write",
+        "data_types": ["public", "internal", "confidential", "financial"]
+      },
+      "healthcare_compliance": {
+        "access_level": "read_write",
+        "data_types": ["public", "internal", "confidential", "restricted", "phi"]
+      },
+      "senior_management": {
+        "access_level": "read_write",
+        "data_types": ["public", "internal", "confidential"]
+      },
+      "legal_counsel": {
+        "access_level": "read_write",
+        "data_types": ["public", "internal", "confidential", "restricted", "pii", "phi", "financial", "proprietary"]
+      },
+      "ciso": {
+        "access_level": "admin",
+        "data_types": ["public", "internal", "confidential", "restricted", "pii", "phi", "financial", "proprietary"]
+      },
+      "compliance_officer": {
+        "access_level": "admin",
+        "data_types": ["public", "internal", "confidential", "restricted", "pii", "phi", "financial", "proprietary"]
+      }
+    }
+  },
+  "encryption_requirements": {
+    "at_rest": {
+      "public": false,
+      "internal": true,
+      "confidential": true,
+      "restricted": true
+    },
+    "in_transit": {
+      "public": true,
+      "internal": true,
+      "confidential": true,
+      "restricted": true
+    },
+    "algorithm": "AES-256-GCM",
+    "key_rotation_days": 90
+  }
+}

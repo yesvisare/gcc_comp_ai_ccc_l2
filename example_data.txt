@@ -1,0 +1,311 @@
+Sample Data for L3 M1.2: Data Governance Requirements for RAG
+===============================================================
+
+This file contains sample text data for testing data classification, PII detection,
+and governance workflows. All examples are synthetic and for demonstration purposes only.
+
+---
+DOCUMENT 1: HR Record (CONFIDENTIAL - 7-year retention)
+---
+Employee Termination Notice
+
+Employee Name: Jane Smith
+Employee ID: EMP-12345
+Email: jane.smith@company.com
+Phone: +1-555-123-4567
+Department: Engineering
+Position: Senior Software Engineer
+Termination Date: January 31, 2025
+Reason: Voluntary resignation
+Last Working Day: January 31, 2025
+
+Expected Classification:
+- Sensitivity: CONFIDENTIAL
+- Data Types: PII
+- Retention: 2555 days (7 years per FLSA/EEOC)
+- Access Groups: hr_director, legal_counsel
+
+---
+DOCUMENT 2: Financial Statement (CONFIDENTIAL - 10-year retention)
+---
+Quarterly Financial Report - Q4 2024
+
+Company: TechVoyageHub Global Capability Center
+Report Period: October 1 - December 31, 2024
+
+Revenue Summary:
+- Total Revenue: $5,000,000
+- Operating Expenses: $3,200,000
+- Net Income: $1,800,000
+
+Account Information:
+- Primary Account: 9876543210
+- Swift Code: ABCDUS33XXX
+- IBAN: GB29NWBK60161331926819
+
+Invoice Details:
+- Invoice #INV-2024-Q4-001: $50,000 (Consulting Services)
+- Invoice #INV-2024-Q4-002: $125,000 (Cloud Infrastructure)
+- Invoice #INV-2024-Q4-003: $75,000 (Software Licenses)
+
+Expected Classification:
+- Sensitivity: CONFIDENTIAL
+- Data Types: FINANCIAL
+- Retention: 3650 days (10 years per SOX 802)
+- Access Groups: finance_team, senior_management, legal_counsel
+
+---
+DOCUMENT 3: Medical Record (RESTRICTED - 7-year retention)
+---
+Patient Medical Record
+
+Patient Name: John Doe
+Patient ID: PAT-67890
+Date of Birth: March 15, 1985
+SSN: 123-45-6789
+Insurance: Blue Cross Blue Shield
+Policy Number: BCBS-987654321
+
+Diagnosis:
+- Primary: Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Secondary: Hypertension (ICD-10: I10)
+
+Treatment Plan:
+- Metformin 500mg - Take twice daily with meals
+- Lisinopril 10mg - Take once daily in morning
+- Blood glucose monitoring - 3 times daily
+- Follow-up appointment: January 15, 2025
+
+Physician: Dr. Sarah Johnson, MD
+Medical License: MD-123456
+Contact: sarah.johnson@hospital.com
+
+Expected Classification:
+- Sensitivity: RESTRICTED
+- Data Types: PHI, PII
+- Retention: 2555 days (7 years per HIPAA)
+- Access Groups: healthcare_compliance, legal_counsel, ciso
+
+---
+DOCUMENT 4: Marketing Email (PUBLIC - 30-day retention)
+---
+Subject: Exclusive Holiday Offer - Save 20% Today!
+
+Dear Valued Customer,
+
+Celebrate the holiday season with our exclusive 20% discount on all products!
+
+Offer Details:
+- Valid until: December 31, 2024
+- Code: HOLIDAY2024
+- Minimum purchase: $50
+
+Shop now at www.example.com
+
+Terms & Conditions:
+- Offer valid for online purchases only
+- Cannot be combined with other promotions
+- Standard shipping rates apply
+
+Unsubscribe: Click here to opt out of marketing emails
+
+Expected Classification:
+- Sensitivity: PUBLIC
+- Data Types: PUBLIC
+- Retention: 30 days (GDPR minimization principle)
+- Access Groups: public
+
+---
+DOCUMENT 5: Company Policy (INTERNAL - Indefinite retention)
+---
+Remote Work Policy - Updated January 2025
+
+Effective Date: February 1, 2025
+
+Eligibility:
+- All full-time employees with 6+ months tenure
+- Manager approval required
+- Performance rating of "Meets Expectations" or higher
+
+Work Arrangements:
+- Hybrid: 3 days office, 2 days remote
+- Full Remote: Available for specific roles with VP approval
+- Equipment: Company-provided laptop and monitor
+
+Security Requirements:
+- VPN connection mandatory for all remote access
+- Two-factor authentication enabled
+- Encrypted video conferencing for sensitive discussions
+
+Expected Classification:
+- Sensitivity: INTERNAL
+- Data Types: PUBLIC (no PII)
+- Retention: -1 (Indefinite)
+- Access Groups: all_employees
+
+---
+DOCUMENT 6: GDPR Erasure Request
+---
+Data Subject Request - Erasure (GDPR Article 17)
+
+Request ID: REQ-2025-001
+Submitted: January 15, 2025
+Deadline: February 14, 2025 (30 days)
+
+User Information:
+- User ID: user_12345
+- Email: user@example.com
+- Name: Alex Martinez
+- Reason: "I no longer use your services and want all my data deleted"
+
+Data Locations (7 Systems):
+1. Vector Database (Pinecone) - Namespace: user_queries
+2. Document Store (S3) - Bucket: gcc-documents/user_uploads
+3. Application Logs (CloudWatch) - Log Group: /app/rag-system
+4. Backup Systems (S3 Glacier) - Vault: long-term-backups
+5. Cache Layer (Redis) - Keys: user:12345:*
+6. Generation History (PostgreSQL) - Table: query_history
+7. Analytics Database (BigQuery) - Dataset: user_analytics
+
+Expected Actions:
+1. Validate request (no legal exceptions)
+2. Revoke all consents
+3. Delete from all 7 systems
+4. Verify complete deletion
+5. Generate deletion certificate
+6. Respond to user within 30 days
+
+---
+DOCUMENT 7: Consent Record
+---
+User Consent Form
+
+User ID: user_001
+Email: customer@business.com
+Consent Date: December 1, 2024
+
+Data Processing Purposes:
+✓ RAG query processing (Legal Basis: Consent)
+✓ Analytics and reporting (Legal Basis: Legitimate Interest)
+✓ Service improvement (Legal Basis: Consent)
+✗ Marketing campaigns (Not consented)
+
+Data Types Covered:
+- Personal Information (Name, Email, User ID)
+- Query History
+- Usage Analytics
+
+Consent Withdrawal:
+User may withdraw consent at any time by:
+1. Visiting account settings
+2. Emailing privacy@company.com
+3. Clicking unsubscribe in emails
+
+Consent Status: ACTIVE
+Last Updated: December 1, 2024
+
+---
+DOCUMENT 8: Data Residency Requirement
+---
+Cross-Border Data Transfer Request
+
+Transfer ID: XFER-2025-001
+Request Date: January 10, 2025
+
+Source Region: EU (Frankfurt - eu-central-1)
+Destination Region: US (N. Virginia - us-east-1)
+Data Subject Location: Germany
+
+Data Classification:
+- User ID: user_eu_001
+- Data Type: PII (Name, Email, Query History)
+- Sensitivity: CONFIDENTIAL
+
+GDPR Article 44 Assessment:
+❌ BLOCKED - EU personal data cannot transfer to US without:
+   - Adequacy Decision (US does not have one post-Schrems II)
+   - Standard Contractual Clauses (SCCs) - NOT in place
+   - Binding Corporate Rules (BCRs) - NOT in place
+
+Required Actions:
+1. Implement Standard Contractual Clauses (SCCs)
+2. Conduct Transfer Impact Assessment (TIA)
+3. Document supplementary measures
+4. Update privacy notices
+5. Obtain explicit user consent (if relying on Art. 49 derogation)
+
+Alternative Solution:
+Store EU user data exclusively in eu-central-1 region
+
+---
+DOCUMENT 9: Audit Log Entry
+---
+System Audit Log - RAG Query Processing
+
+Timestamp: 2025-01-15T14:30:00Z
+Event ID: AUDIT-2025-001
+Event Type: DATA_ACCESS
+
+User Information:
+- User ID: user_001
+- Email: employee@company.com
+- IP Address: 10.0.1.25
+- Location: Mumbai, India
+
+Action Details:
+- Operation: RAG Query
+- Query: "What is the company vacation policy?"
+- Retrieved Chunks: [chunk_001, chunk_003, chunk_007]
+- Generation Model: gpt-4
+- Response Cached: Yes (TTL: 86400s)
+
+Data Classification:
+- Data Type: INTERNAL (company policies)
+- Sensitivity: INTERNAL
+- Consent Required: No (legitimate interest)
+
+Compliance Checks:
+✓ User authenticated
+✓ Access authorized
+✓ Data residency compliant (India user, India region)
+✓ Audit trail logged
+
+Retention: 2555 days (7 years per SOX/GDPR)
+
+---
+DOCUMENT 10: Retention Policy Execution Log
+---
+Automated Retention Policy Execution
+
+Job ID: RETENTION-JOB-2025-001
+Execution Date: January 15, 2025 02:00:00 UTC
+Policy: hr_records (7-year retention)
+Airflow DAG: retention_hr_records_dag
+
+Documents Scanned: 1,247
+Documents Exceeding Retention: 23
+
+Deletion Summary:
+- Document Store (S3): 23 files deleted
+- Vector Database (Pinecone): 156 vectors deleted (23 docs × avg 6.8 chunks)
+- Embeddings Cache: 156 embeddings removed
+- Query History: 412 references purged
+- Backup Systems: 23 files removed from Glacier
+- Redis Cache: 89 cache keys expired
+- Analytics: 23 records anonymized (retained for aggregate stats)
+
+Total Data Deleted: 4.2 GB
+Execution Time: 47 minutes
+Status: COMPLETED
+Compliance: ✓ GDPR data minimization, ✓ FLSA/EEOC retention met
+
+Next Execution: January 16, 2025 02:00:00 UTC
+
+---
+END OF SAMPLE DATA
+---
+
+Total Documents: 10
+PII Examples: Email (5), SSN (2), Phone (3), Account Numbers (4), IBAN (1)
+Classifications: RESTRICTED (1), CONFIDENTIAL (3), INTERNAL (1), PUBLIC (2)
+Retention Periods: 7 years (3), 10 years (1), 30 days (1), Indefinite (2)
