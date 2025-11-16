@@ -1,0 +1,194 @@
+Sample RAG Architecture Specifications for Compliance Analysis
+
+This file contains example RAG architectures across different compliance scenarios.
+
+========================================
+1. European Financial Services RAG
+========================================
+
+Business Context:
+- Location: EU (Frankfurt, Germany)
+- Industry: Financial services
+- Data: Customer PII, transaction records, financial statements
+- Required Frameworks: GDPR, SOC 2 Type II, ISO 27001
+- Penalty Risk: €20M (GDPR Article 83)
+- Annual Revenue: €150M
+
+RAG Architecture:
+- Components: Pinecone vector DB, OpenAI embeddings, GPT-4, custom API gateway
+- Data Flows: Document ingestion → Embedding → Vector storage → Retrieval → LLM generation
+- Encryption: AES-256 at rest, TLS 1.3 in transit
+- Access Control: RBAC with MFA for all users
+- Audit Logging: 7-year retention in Elasticsearch
+- Backup: Daily backups with erasure exclusion markers
+- Vendors: OpenAI (BAA signed), Pinecone (GDPR DPA signed)
+
+Compliance Status:
+- GDPR: 95% compliant (missing Article 30 processing records)
+- SOC 2: 90% compliant (need 6-month evidence for Type II)
+- ISO 27001: 85% compliant (missing ISMS documentation)
+
+Estimated Remediation:
+- Timeline: 8 weeks
+- Cost: ₹12L
+- Priority Gaps: ISMS documentation (80 hours), Type II evidence collection (automated)
+
+========================================
+2. US Healthcare RAG
+========================================
+
+Business Context:
+- Location: US (New York, NY)
+- Industry: Healthcare
+- Data: Patient health information (PHI), medical records, billing data
+- Required Frameworks: HIPAA, SOC 2 Type II
+- Penalty Risk: $50,000 per violation
+- Annual Revenue: $75M
+
+RAG Architecture:
+- Components: Azure Cognitive Search, Azure OpenAI, custom vector DB
+- Data Flows: HL7 FHIR ingestion → PHI extraction → Embedding → Secure storage → Retrieval
+- Encryption: FIPS 140-2 validated encryption
+- Access Control: Unique user IDs, emergency access procedure, automatic logoff
+- Audit Logging: 7-year retention (HIPAA requirement)
+- Backup: HIPAA-compliant backup with geo-replication
+- Vendors: Microsoft Azure (BAA signed), OpenAI via Azure (BAA signed)
+
+Compliance Status:
+- HIPAA: 98% compliant (missing device security controls)
+- SOC 2: 92% compliant (availability TSC needs HA architecture)
+
+Estimated Remediation:
+- Timeline: 4 weeks
+- Cost: ₹6L
+- Priority Gaps: Device encryption enforcement (24 hours), HA implementation (60 hours)
+
+========================================
+3. Global IT Services RAG (GCC)
+========================================
+
+Business Context:
+- Location: India GCC serving 50+ global business units
+- Industry: IT services
+- Data: Corporate documents, code repositories, technical documentation
+- Required Frameworks: ISO 27001, SOC 2, GDPR (for EU clients)
+- Multi-Tenant: 50+ business units across 15 countries
+- Annual Revenue: ₹500 Cr
+
+RAG Architecture:
+- Components: Qdrant vector DB, Sentence Transformers, LLaMA 2, Kubernetes-based API
+- Data Flows: Multi-tenant ingestion → Tenant isolation → Embedding → Storage → Retrieval
+- Encryption: Per-tenant encryption keys with KMS
+- Access Control: Tenant-aware RBAC, per-BU MFA policies
+- Audit Logging: Per-tenant audit trails with 10-year retention
+- Backup: Tenant-isolated backups with per-BU retention policies
+- Vendors: AWS (DPA signed), Qdrant (self-hosted)
+
+Compliance Status:
+- ISO 27001: 88% compliant (missing A.16 incident management procedures)
+- SOC 2: 85% compliant (confidentiality TSC needs key rotation)
+- GDPR: 90% compliant (missing per-tenant erasure verification)
+
+Multi-Tenant Challenges:
+- 50+ distinct compliance profiles (each BU has different framework requirements)
+- Chargeback model: ₹750-1,200/month per tenant
+- 5-10 audits per year across frameworks
+- Cross-tenant isolation verification critical
+
+Estimated Remediation:
+- Timeline: 12 weeks
+- Cost: ₹18L
+- Priority Gaps:
+  1. Incident management procedures (28 hours)
+  2. Key rotation automation (40 hours)
+  3. Per-tenant erasure testing (60 hours)
+  4. Multi-tenant compliance dashboard (80 hours)
+
+========================================
+4. Minimal RAG with Gaps (Startup)
+========================================
+
+Business Context:
+- Location: US (San Francisco, CA)
+- Industry: Tech startup
+- Data: User queries, document embeddings
+- Required Frameworks: None (pre-compliance phase)
+- Annual Revenue: $500K
+
+RAG Architecture:
+- Components: Chroma DB (local), OpenAI embeddings, GPT-3.5
+- Data Flows: Basic ingestion → Embedding → Local storage → Retrieval
+- Encryption: None
+- Access Control: Single admin account
+- Audit Logging: None
+- Backup: None
+- Vendors: OpenAI (no BAA)
+
+Compliance Status:
+- GDPR: 15% compliant (critical gaps in all areas)
+- SOC 2: 10% compliant (missing most controls)
+- ISO 27001: 5% compliant (no ISMS)
+- HIPAA: 0% compliant (not applicable, no PHI)
+
+Estimated Remediation (if needed):
+- Timeline: 24 weeks (complete rebuild)
+- Cost: ₹35L
+- Recommendation: Defer compliance until product-market fit
+
+Decision: Don't build compliance yet
+- Reason: Pre-revenue, < 10 customers, no regulated data
+- Alternative: Manual privacy practices, implement basic encryption
+- Trigger: Revisit compliance when revenue > $5M or first enterprise contract
+
+========================================
+5. Multi-Framework Overlapping Controls Example
+========================================
+
+This example demonstrates how implementing ONE control can satisfy MULTIPLE frameworks:
+
+Control: AES-256 Encryption at Rest
+
+Satisfies:
+- GDPR Article 32: Security of Processing
+- SOC 2 Confidentiality TSC: C1.1
+- ISO 27001 A.10: Cryptographic Controls
+- HIPAA 164.312(a)(2)(iv): Encryption and Decryption
+
+Implementation Effort: 24 hours (one-time)
+Compliance Benefit: Satisfies 4 frameworks simultaneously
+Cost Savings: Avoids 3 redundant implementations (72 hours saved)
+
+Other Overlapping Controls:
+1. Audit Logging (GDPR + SOC 2 + ISO + HIPAA)
+2. RBAC Access Control (GDPR + SOC 2 + ISO + HIPAA)
+3. MFA (SOC 2 + ISO + HIPAA)
+4. Backup Strategy (SOC 2 + ISO + HIPAA)
+5. Incident Response Plan (ISO + HIPAA)
+
+Total Controls Across 4 Frameworks: 400
+Unique Controls After Deduplication: 150
+Reduction: 62.5%
+
+========================================
+Summary: When to Use Multi-Framework Analyzer
+========================================
+
+✅ Use When:
+- 50+ tenants across multiple jurisdictions
+- 2+ frameworks required
+- Regulated industries (healthcare, finance)
+- Continuous compliance needed
+- Budget: ₹10-20L for development
+
+❌ Don't Use When:
+- < 5 tenants
+- Single framework
+- Pre-revenue startup
+- Budget < ₹5L
+
+🔄 Alternatives:
+- Manual audits: ₹2-4L/year
+- SaaS platforms: ₹40L-1.6Cr/year (Vanta, Drata)
+- In-house team: ₹1.5-2.5Cr/year
+
+Recommended: Hybrid approach for GCC (₹16L Year 1 + ₹9L/year)

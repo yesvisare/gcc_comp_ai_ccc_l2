@@ -1,0 +1,102 @@
+{
+  "rag_architecture": {
+    "components": ["vector_db", "embedding_model", "llm", "api_gateway"],
+    "data_flows": ["ingestion", "embedding", "storage", "retrieval", "generation"],
+    "storage": {
+      "type": "postgres",
+      "encryption": "AES-256",
+      "location": "EU-West-1",
+      "tls_version": "TLS1.3",
+      "key_management": true
+    },
+    "access_control": {
+      "method": "RBAC",
+      "roles": ["admin", "user", "auditor"],
+      "mfa_required": true,
+      "unique_user_ids": true,
+      "least_privilege": true,
+      "emergency_access": true,
+      "automatic_logoff": true
+    },
+    "monitoring": {
+      "audit_logs": true,
+      "log_retention_days": 2555,
+      "continuous_monitoring": true,
+      "change_management": true,
+      "malware_protection": true,
+      "intrusion_detection": true
+    },
+    "apis": [
+      "erasure_api",
+      "data_export",
+      "consent_management",
+      "delete_user_data",
+      "query_user_data",
+      "user_data_export"
+    ],
+    "documentation": {
+      "processing_records": true,
+      "data_flow_diagram": true,
+      "security_policy": true,
+      "isms_scope": true,
+      "risk_assessment": true,
+      "statement_of_applicability": true,
+      "incident_response_plan": true,
+      "privacy_notice": true
+    },
+    "retention_policy": {
+      "customer_data": "7_years",
+      "financial_data": "10_years",
+      "health_records": "6_years"
+    },
+    "infrastructure": {
+      "high_availability": true,
+      "backup_strategy": true,
+      "disaster_recovery": true,
+      "business_continuity_plan": true,
+      "facility_access_control": true,
+      "device_security": true
+    },
+    "data_processing": {
+      "input_validation": true,
+      "error_handling": true,
+      "field_filtering": true,
+      "pii_detection": true
+    },
+    "backups": {
+      "exclusion_markers": true
+    },
+    "incident_response": {
+      "incident_plan": true,
+      "reporting_procedure": true
+    },
+    "training": {
+      "hipaa_training": true
+    },
+    "vendors": [
+      {
+        "name": "OpenAI",
+        "baa_signed": true,
+        "service": "LLM"
+      },
+      {
+        "name": "Pinecone",
+        "baa_signed": true,
+        "service": "Vector Database"
+      }
+    ],
+    "vector_db": {
+      "supports_metadata_deletion": true
+    },
+    "automated_deletion": true
+  },
+  "frameworks": ["GDPR", "SOC2", "ISO27001", "HIPAA"],
+  "tenant_profile": {
+    "name": "Healthcare_Financial_Services_BU",
+    "location": "EU + US",
+    "data_sensitivity": "high",
+    "compliance_requirements": ["GDPR", "HIPAA", "SOC2"],
+    "business_units": 15,
+    "annual_revenue_usd": 50000000
+  }
+}

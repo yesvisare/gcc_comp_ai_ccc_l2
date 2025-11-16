@@ -1,0 +1,46 @@
+{
+  "frameworks": ["GDPR", "SOC2", "ISO27001", "HIPAA"],
+  "analysis_settings": {
+    "include_remediation": true,
+    "risk_scoring": true,
+    "generate_report": true,
+    "prioritize_gaps": true,
+    "identify_overlapping_controls": true
+  },
+  "thresholds": {
+    "min_compliance_score": 0.75,
+    "max_gap_count": 10,
+    "audit_ready_threshold": 0.90
+  },
+  "remediation_settings": {
+    "hourly_rate_inr": 937.5,
+    "parallel_implementation": false,
+    "quick_win_threshold_hours": 24,
+    "long_term_threshold_hours": 60
+  },
+  "gap_prioritization": {
+    "method": "penalty_risk_times_effort",
+    "gdpr_weight": 1.0,
+    "soc2_weight": 0.8,
+    "iso27001_weight": 0.8,
+    "hipaa_weight": 1.0
+  },
+  "multi_tenant_settings": {
+    "enabled": true,
+    "per_tenant_profiles": true,
+    "chargeback_model": true,
+    "base_cost_inr": 3000,
+    "framework_premium": {
+      "GDPR": 1000,
+      "SOC2": 1500,
+      "ISO27001": 1200,
+      "HIPAA": 2000
+    }
+  },
+  "reporting": {
+    "format": ["json", "pdf", "html"],
+    "include_recommendations": true,
+    "include_cost_estimates": true,
+    "include_timeline": true
+  }
+}
