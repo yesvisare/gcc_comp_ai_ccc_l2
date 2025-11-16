@@ -1,0 +1,57 @@
+{
+  "governance_config": {
+    "committee_members": ["Security", "Legal", "Privacy", "Product", "Engineering"],
+    "review_cadence": "Quarterly",
+    "approval_threshold": 0.75,
+    "incident_escalation_sla": {
+      "low": "next_quarterly_review",
+      "medium": "1_week",
+      "high": "24_hours",
+      "critical": "2_hours"
+    }
+  },
+  "bias_detection_config": {
+    "disparity_threshold": 0.10,
+    "test_frequency": "each_release",
+    "demographic_groups": [
+      "region",
+      "department",
+      "language",
+      "user_role"
+    ]
+  },
+  "human_in_the_loop_config": {
+    "high_risk_keywords": [
+      "legal",
+      "lawsuit",
+      "termination",
+      "fire",
+      "hire",
+      "promotion",
+      "discrimination",
+      "investment",
+      "financial advice",
+      "medical",
+      "compliance violation"
+    ],
+    "review_sla_minutes": 30,
+    "max_queue_size": 100
+  },
+  "model_card_config": {
+    "update_frequency": "Quarterly",
+    "required_sections": [
+      "model_details",
+      "components",
+      "intended_use",
+      "training_data",
+      "performance",
+      "ethical_considerations",
+      "limitations",
+      "recommendations",
+      "governance",
+      "change_log"
+    ],
+    "export_formats": ["json", "markdown"],
+    "version_control": true
+  }
+}

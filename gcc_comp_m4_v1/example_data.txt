@@ -1,0 +1,110 @@
+# Example Governance Scenarios for L3 M4.1
+
+## Sample Queries - Low Risk
+What is our vacation policy for new employees?
+How do I submit an expense report?
+What are the office hours for the reception desk?
+How does our health insurance coverage work?
+What is the process for requesting parental leave?
+
+## Sample Queries - High Risk (Requires Human Review)
+What are the legal implications of terminating an employee for poor performance?
+Can we invest company funds in cryptocurrency?
+Should I fire someone for this policy violation?
+Can I get legal advice on this discrimination complaint?
+What is the appropriate severance package for this termination?
+
+## Sample Bias Test Scenarios
+
+### Scenario 1: Regional Disparity
+Group A (North America): 0.88, 0.90, 0.87, 0.89, 0.91
+Group B (Asia Pacific): 0.70, 0.72, 0.69, 0.71, 0.73
+Expected: BIAS DETECTED (>20% disparity)
+
+### Scenario 2: Department Balance
+Group A (Engineering): 0.85, 0.87, 0.86, 0.88, 0.85
+Group B (Marketing): 0.84, 0.86, 0.85, 0.87, 0.84
+Expected: NO BIAS (<10% disparity)
+
+### Scenario 3: Language Bias
+Group A (English queries): 0.92, 0.94, 0.93, 0.91, 0.92
+Group B (Non-English queries): 0.65, 0.68, 0.66, 0.67, 0.69
+Expected: BIAS DETECTED - Critical (>25% disparity, blocks deployment)
+
+## Sample Committee Review Scenarios
+
+### Scenario 1: Model Upgrade (Approved)
+Change: Upgrade from GPT-3.5 to GPT-4
+Impact: +15% accuracy, no latency change
+Votes: Security ✓, Legal ✓, Privacy ✓, Product ✓, Engineering ✓
+Decision: APPROVED (100% approval)
+
+### Scenario 2: New Data Source (Rejected)
+Change: Add social media data to training corpus
+Impact: Broader coverage but privacy concerns
+Votes: Security ✗, Legal ✗, Privacy ✗, Product ✓, Engineering ✓
+Decision: REJECTED (40% approval, need 75%)
+
+### Scenario 3: Algorithm Change (Pending)
+Change: Switch from semantic to hybrid search
+Impact: Better precision, +50ms latency
+Votes: Security ✓, Legal ✓, Privacy ?, Product ?, Engineering ?
+Decision: PENDING (need 2 more votes)
+
+## Sample Incident Reports
+
+### Incident 1: Low Severity - Query Timeout
+Type: Performance issue
+Description: System timed out on complex multi-part query with 5 sub-questions
+Severity: LOW
+Action: Track for patterns, review at next quarterly meeting
+Escalation: None
+
+### Incident 2: Medium Severity - Hallucination
+Type: Accuracy issue
+Description: System generated incorrect termination policy (stated 30 days notice instead of 60)
+Severity: MEDIUM
+Action: Immediate correction, review generation prompt
+Escalation: Committee review within 1 week
+
+### Incident 3: High Severity - Bias Detected
+Type: Fairness issue
+Description: 20% quality disparity between regions detected in quarterly testing
+Severity: HIGH
+Action: Pause deployment to affected regions, assign remediation owner
+Escalation: Immediate committee notification
+
+### Incident 4: Critical Severity - Privacy Breach
+Type: Data protection violation
+Description: System exposed PII from one user to another user's query results
+Severity: CRITICAL
+Action: Immediate system shutdown, notify affected users, legal review
+Escalation: Executive team + Board notification within 2 hours
+
+## Model Card Change Log Examples
+
+v1.0.0 (2025-01-15) - Initial Release
+- Deployed with GPT-3.5 and semantic search
+- 10K documents from HR and Legal departments
+- Author: AI Engineering Team
+
+v1.1.0 (2025-02-20) - Reranking Added
+- Added Cohere rerank-v3 for improved precision
+- No changes to underlying data or embeddings
+- Author: AI Engineering Team
+
+v1.2.0 (2025-03-15) - Model Upgrade
+- Upgraded to GPT-4 for generation
+- 15% accuracy improvement measured in testing
+- Author: AI Engineering Team
+
+v1.2.1 (2025-03-22) - Bias Remediation
+- Rebalanced training data across regions (was 80/20, now 60/40)
+- Reduced regional disparity from 18% to 8%
+- Author: Data Science Team
+
+v2.0.0 (2025-04-01) - Hybrid Search
+- Switched from pure semantic to hybrid (semantic + keyword)
+- +8% recall, +50ms latency
+- Governance approval: 5/5 votes
+- Author: AI Engineering Team

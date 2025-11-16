@@ -1,0 +1,96 @@
+{
+  "sample_queries": [
+    "What is our vacation policy for new employees?",
+    "How do I submit an expense report?",
+    "What are the legal implications of terminating an employee for poor performance?",
+    "Can we invest company funds in cryptocurrency?",
+    "What is the process for requesting parental leave?",
+    "Should I fire someone for this policy violation?",
+    "What are our compliance requirements under GDPR?",
+    "How does our health insurance coverage work?",
+    "What is the approval process for hiring a new contractor?",
+    "Can I get legal advice on this discrimination complaint?"
+  ],
+  "high_risk_keywords": [
+    "legal",
+    "lawsuit",
+    "termination",
+    "fire",
+    "hire",
+    "promotion",
+    "discrimination",
+    "investment",
+    "financial advice",
+    "medical",
+    "compliance violation"
+  ],
+  "sample_bias_test_data": {
+    "region_comparison": {
+      "north_america_scores": [0.88, 0.90, 0.87, 0.89, 0.91, 0.88, 0.90],
+      "asia_pacific_scores": [0.85, 0.83, 0.86, 0.84, 0.87, 0.85, 0.84],
+      "description": "Testing if retrieval quality differs between regions"
+    },
+    "department_comparison": {
+      "engineering_scores": [0.92, 0.94, 0.91, 0.93, 0.92, 0.94, 0.93],
+      "marketing_scores": [0.75, 0.73, 0.76, 0.74, 0.77, 0.75, 0.76],
+      "description": "Testing if technical docs bias toward engineering queries"
+    }
+  },
+  "sample_model_card": {
+    "model_name": "GCC_Compliance_RAG",
+    "model_version": "1.0.0",
+    "model_owner": "AI Engineering Team",
+    "contact_email": "ai-engineering@gcc.com",
+    "components": {
+      "embedding_model": "text-embedding-3-small",
+      "vector_database": "Qdrant",
+      "generation_model": "gpt-4",
+      "retrieval_method": "hybrid (semantic + keyword)",
+      "reranker": "cohere-rerank-v3"
+    },
+    "primary_use_cases": [
+      "HR policy questions for employees",
+      "Compliance document retrieval for legal team",
+      "Benefits information lookup"
+    ],
+    "out_of_scope_uses": [
+      "Making hiring/firing decisions without human review",
+      "Providing legal advice for lawsuits",
+      "Setting employee compensation",
+      "Medical diagnosis or treatment recommendations"
+    ]
+  },
+  "sample_governance_review": {
+    "change_type": "model_update",
+    "description": "Upgrade from GPT-3.5 to GPT-4 for improved accuracy",
+    "impact_assessment": "Expected 15% improvement in answer quality, no change to latency",
+    "submitted_by": "AI Engineering Team",
+    "committee_members": ["Security", "Legal", "Privacy", "Product", "Engineering"],
+    "approval_threshold": 0.75
+  },
+  "sample_incidents": [
+    {
+      "incident_type": "bias_detected",
+      "description": "20% quality disparity detected between North America and Asia-Pacific regions",
+      "severity": "high",
+      "reported_by": "Data Science Team"
+    },
+    {
+      "incident_type": "query_timeout",
+      "description": "System timed out on complex multi-part query",
+      "severity": "low",
+      "reported_by": "Operations Team"
+    },
+    {
+      "incident_type": "hallucination",
+      "description": "System generated factually incorrect policy information",
+      "severity": "medium",
+      "reported_by": "Quality Assurance"
+    }
+  ],
+  "metadata": {
+    "source": "L3 M4.1 Training Module",
+    "purpose": "Example data for AI governance demonstrations",
+    "version": "1.0.0"
+  }
+}
