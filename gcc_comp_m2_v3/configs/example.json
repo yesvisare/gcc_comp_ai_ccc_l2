@@ -1,0 +1,40 @@
+{
+  "vault": {
+    "addr": "http://localhost:8200",
+    "namespace": "gcc-secrets",
+    "k8s_role": "rag-api",
+    "auth_method": "kubernetes"
+  },
+  "encryption": {
+    "algorithm": "AES-256-GCM",
+    "kek_path": "gcc-secrets/encryption/kek",
+    "key_rotation_days": 365
+  },
+  "tls": {
+    "enabled": true,
+    "cert_path": "/etc/tls/certs",
+    "renewal_days": 30,
+    "issuer": "letsencrypt-prod"
+  },
+  "key_rotation": {
+    "api_keys": {
+      "frequency_days": 90,
+      "services": ["openai", "pinecone"]
+    },
+    "database_credentials": {
+      "frequency_hours": 24,
+      "engine": "vault-dynamic-secrets"
+    }
+  },
+  "compliance": {
+    "audit_log_retention_years": 7,
+    "audit_log_storage": "s3-glacier",
+    "regions": ["india", "us", "eu"],
+    "frameworks": ["SOX", "DPDPA", "GDPR", "SOC2", "ISO27001"]
+  },
+  "settings": {
+    "timeout_seconds": 30,
+    "max_retries": 3,
+    "log_level": "INFO"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "description": "Example data for L3 M2.3: Encryption & Secrets Management",
+  "vault_secrets": [
+    {
+      "path": "gcc-secrets/openai",
+      "fields": ["api_key", "organization"],
+      "usage": "OpenAI API credentials for RAG embeddings"
+    },
+    {
+      "path": "gcc-secrets/pinecone",
+      "fields": ["api_key", "environment"],
+      "usage": "Pinecone vector database credentials"
+    },
+    {
+      "path": "gcc-secrets/postgres",
+      "fields": ["username", "password", "host", "port", "database"],
+      "usage": "PostgreSQL dynamic credentials (24-hour TTL)"
+    }
+  ],
+  "encryption_examples": [
+    {
+      "plaintext": "User PII: SSN 123-45-6789",
+      "purpose": "Sensitive personal information requiring AES-256 encryption"
+    },
+    {
+      "plaintext": "Credit Card: 4111-1111-1111-1111",
+      "purpose": "Payment information for compliance (PCI-DSS)"
+    },
+    {
+      "plaintext": "Medical Record ID: MR-98765",
+      "purpose": "HIPAA-regulated healthcare data"
+    }
+  ],
+  "key_rotation_schedules": {
+    "openai_api_key": {
+      "frequency": "quarterly",
+      "days": 90,
+      "last_rotated": "2025-01-15",
+      "next_rotation": "2025-04-15"
+    },
+    "pinecone_api_key": {
+      "frequency": "quarterly",
+      "days": 90,
+      "last_rotated": "2025-01-15",
+      "next_rotation": "2025-04-15"
+    },
+    "postgres_credentials": {
+      "frequency": "daily",
+      "hours": 24,
+      "method": "Vault dynamic secrets engine"
+    },
+    "kek_master_key": {
+      "frequency": "annual",
+      "days": 365,
+      "last_rotated": "2025-01-01",
+      "next_rotation": "2026-01-01"
+    }
+  },
+  "tls_certificates": [
+    {
+      "service": "rag-api",
+      "issuer": "Let's Encrypt",
+      "valid_days": 90,
+      "renewal_threshold": 30,
+      "automation": "cert-manager"
+    }
+  ],
+  "compliance_requirements": {
+    "sox_404": {
+      "requirement": "7-year immutable audit trail",
+      "storage": "S3 Glacier with legal hold"
+    },
+    "dpdpa_india": {
+      "requirement": "India data residency",
+      "implementation": "Multi-region Vault replication"
+    },
+    "gdpr_eu": {
+      "requirement": "EU data protection",
+      "implementation": "AES-256 encryption + right to be forgotten"
+    }
+  },
+  "failure_scenarios": [
+    {
+      "failure": "Hardcoded API key in code",
+      "impact": "$120K unauthorized usage, $50M funding loss",
+      "prevention": "Vault dynamic secrets + git-secrets scanner"
+    },
+    {
+      "failure": "Unencrypted database backup",
+      "impact": "GDPR/DPDPA violation, data residency breach",
+      "prevention": "PostgreSQL TDE + encrypted S3 backups"
+    },
+    {
+      "failure": "Missed key rotation",
+      "impact": "SOC 2 audit failure, compliance penalty",
+      "prevention": "Automated rotation via KeyRotationManager"
+    }
+  ]
+}

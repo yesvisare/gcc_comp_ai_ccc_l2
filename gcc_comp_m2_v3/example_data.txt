@@ -1,0 +1,84 @@
+L3 M2.3 Example Data: Encryption & Secrets Management
+========================================================
+
+Vault Secret Paths (GCC Multi-Tenant RAG System)
+-------------------------------------------------
+gcc-secrets/openai          → OpenAI API key for embeddings (50+ tenants)
+gcc-secrets/pinecone        → Pinecone vector DB credentials
+gcc-secrets/postgres        → Dynamic PostgreSQL credentials (24-hour TTL)
+gcc-secrets/encryption/kek  → Master encryption key (KEK) for envelope encryption
+
+Sample Sensitive Data (Requires AES-256 Encryption)
+----------------------------------------------------
+User PII: SSN 123-45-6789, Email user@example.com
+Credit Card: 4111-1111-1111-1111, CVV 123
+Medical Record: Patient ID MR-98765, Diagnosis: Confidential
+Financial Data: Account 9876543210, Balance $50,000
+GDPR Protected: EU citizen data subject to right to erasure
+
+Key Rotation Examples
+----------------------
+API Key Rotation (Quarterly):
+  Before: sk-old-key-abc123xyz
+  After:  sk-new-key-def456uvw
+  Status: Rotated 2025-01-15, Next rotation 2025-04-15
+
+PostgreSQL Credentials (Daily via Vault):
+  Username: v-k8s-rag-api-abc123 (expires in 24h)
+  Password: A1b2C3d4E5f6G7h8I9j0
+  Auto-rotation: Vault generates new creds on each request
+
+TLS Certificate Status
+-----------------------
+Certificate: rag-api.gcc.techvoyagehub.com
+Issuer: Let's Encrypt
+Valid from: 2025-01-15
+Expires: 2025-04-15 (90 days)
+Renewal: Automated via cert-manager (30 days before expiry)
+
+GCC Compliance Audit Events (SOX 404 7-Year Retention)
+-------------------------------------------------------
+2025-01-15T10:30:00Z | secret_access      | rag-api-pod-xyz | gcc-secrets/openai | SUCCESS
+2025-01-15T10:31:15Z | encryption_request | rag-api-pod-xyz | AES-256 PII data   | SUCCESS
+2025-01-15T11:00:00Z | api_key_rotation   | admin-user      | openai quarterly   | SUCCESS
+2025-01-15T11:05:30Z | cert_renewal       | cert-manager    | rag-api TLS        | SUCCESS
+2025-01-15T11:10:45Z | postgres_rotation  | rag-api-pod-xyz | dynamic creds      | SUCCESS
+
+Real-World Failure Scenarios (from GCC Bangalore Case Study)
+-------------------------------------------------------------
+Failure 1: Hardcoded secrets in GitHub
+  Impact: $120K cryptocurrency mining costs, $50M Series B funding lost
+  Root Cause: Developers committed .env file with API keys
+  Prevention: git-secrets pre-commit hook + Vault integration
+
+Failure 2: Unencrypted database backups
+  Impact: GDPR/DPDPA violation, data residency breach
+  Root Cause: PostgreSQL backups stored in S3 without encryption
+  Prevention: TDE enabled + S3 SSE-KMS encryption
+
+Failure 3: Expired TLS certificates
+  Impact: 4-hour production outage, customer trust loss
+  Root Cause: Manual cert renewal process missed deadline
+  Prevention: cert-manager automation + monitoring alerts
+
+Multi-Region Vault Replication (Data Residency)
+------------------------------------------------
+India Region:   vault-india.gcc.internal (DPDPA compliance)
+US Region:      vault-us.gcc.internal (SOX 404 compliance)
+EU Region:      vault-eu.gcc.internal (GDPR compliance)
+Replication:    Active-active with local secret access
+
+Envelope Encryption Example (AES-256)
+--------------------------------------
+1. Generate random DEK (Data Encryption Key): 32 bytes
+2. Encrypt plaintext with DEK using AES-256-GCM
+3. Encrypt DEK with KEK (Key Encryption Key from Vault)
+4. Store: encrypted_dek || iv || ciphertext || tag
+5. Decryption: Retrieve KEK from Vault → decrypt DEK → decrypt data
+
+Hotel Key-Card Analogy (Secrets Management)
+--------------------------------------------
+Traditional (Hardcoded):  Master key copied to all rooms (security risk)
+Vault (Dynamic):          Time-limited key-card per guest (expires 24h)
+Benefits:                 Guest checkout = automatic invalidation
+                         Lost card = reissue without changing all locks
