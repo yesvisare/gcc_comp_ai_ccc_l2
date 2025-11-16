@@ -1,0 +1,92 @@
+{
+  "use_cases": [
+    {
+      "id": 1,
+      "name": "Customer Service RAG System",
+      "description": "Our customer service RAG system processes support tickets containing customer names, emails (john.doe@example.com), and order histories to provide automated responses.",
+      "expected_regulations": ["GDPR", "CCPA", "SOC 2"],
+      "expected_sensitivity": 6
+    },
+    {
+      "id": 2,
+      "name": "Healthcare Patient Records",
+      "description": "Patient John Doe (SSN: 123-45-6789) was diagnosed with hypertension and prescribed medication. Medical record accessible at patient.records@hospital.com. Treatment cost: $5,000 charged to card 4532-1234-5678-9010.",
+      "expected_regulations": ["HIPAA", "GDPR", "PCI-DSS"],
+      "expected_sensitivity": 10
+    },
+    {
+      "id": 3,
+      "name": "Financial Services Document Processing",
+      "description": "Process loan applications containing SSN (987-65-4321), account numbers (ACCT12345678), credit scores, and payment card information for identity verification.",
+      "expected_regulations": ["GDPR", "CCPA", "SOX", "GLB", "PCI-DSS"],
+      "expected_sensitivity": 9
+    },
+    {
+      "id": 4,
+      "name": "HR Recruitment System",
+      "description": "CONFIDENTIAL - Internal recruitment RAG system processing candidate resumes with names, emails (candidates@company.com), phone numbers (555-123-4567), and proprietary interview assessments.",
+      "expected_regulations": ["GDPR", "CCPA", "ISO 27001"],
+      "expected_sensitivity": 7
+    },
+    {
+      "id": 5,
+      "name": "Public Documentation Index",
+      "description": "Index of open-source software documentation, technical blog posts, and public API references. No personal information, all public domain content.",
+      "expected_regulations": [],
+      "expected_sensitivity": 1
+    },
+    {
+      "id": 6,
+      "name": "Legal Contract Repository",
+      "description": "CONFIDENTIAL - Proprietary contract repository containing NDAs, trade secret agreements, patent-pending technology descriptions, and client confidential information. Export-controlled technical data included.",
+      "expected_regulations": ["ISO 27001", "NDA"],
+      "expected_sensitivity": 8
+    },
+    {
+      "id": 7,
+      "name": "E-commerce Order Management",
+      "description": "Process customer orders with billing addresses, credit card numbers (4532-1234-5678-9010), email confirmations (orders@shop.com), and shipping tracking. Customer service contacts: 1-800-555-0199.",
+      "expected_regulations": ["PCI-DSS", "GDPR", "CCPA"],
+      "expected_sensitivity": 7
+    },
+    {
+      "id": 8,
+      "name": "Research Database with PHI",
+      "description": "Clinical research database containing patient diagnoses, lab results, treatment outcomes, and medication histories. De-identification attempted but some identifiers remain: MRN, dates of service, doctor notes.",
+      "expected_regulations": ["HIPAA", "GDPR"],
+      "expected_sensitivity": 9
+    },
+    {
+      "id": 9,
+      "name": "Marketing Analytics System",
+      "description": "Analyze customer behavior from website cookies, email campaign responses (marketing@company.com), and purchase patterns. Includes customer emails and browsing history.",
+      "expected_regulations": ["GDPR", "CCPA"],
+      "expected_sensitivity": 5
+    },
+    {
+      "id": 10,
+      "name": "Multi-Regulation GCC Use Case",
+      "description": "Global capability center processing: employee PII (names, SSNs: 111-22-3333), payroll data (account numbers, routing: 123456789), health insurance claims (patient diagnoses, prescriptions), and proprietary business processes (CONFIDENTIAL trade secrets). Payment processing for benefits: card 5432-1098-7654-3210. Contact HR at hr.benefits@gcc.com or 555-987-6543.",
+      "expected_regulations": ["GDPR", "CCPA", "HIPAA", "SOX", "PCI-DSS", "ISO 27001", "GLB"],
+      "expected_sensitivity": 10
+    }
+  ],
+  "sample_queries": [
+    "What regulations apply to my customer service chatbot?",
+    "Do I need HIPAA compliance if I process medical appointment reminders?",
+    "What are the penalties for GDPR violations?",
+    "How do I handle credit card data in my RAG system?",
+    "What controls are required for SOC 2 compliance?",
+    "Can I delete user data from vector embeddings?",
+    "What's the difference between PII and PHI?",
+    "How do I implement right to be forgotten in RAG?",
+    "What audit logging is required for compliance?",
+    "Do I need Business Associate Agreements for my vector database vendor?"
+  ],
+  "metadata": {
+    "version": "1.0",
+    "created": "2025-01-16",
+    "purpose": "Demonstration and testing of compliance risk assessment tool",
+    "note": "These examples are for educational purposes. Consult legal counsel for production compliance."
+  }
+}

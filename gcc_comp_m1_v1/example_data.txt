@@ -1,0 +1,173 @@
+Example Use Cases for Compliance Risk Assessment
+
+==================================================
+USE CASE 1: Customer Service RAG System
+==================================================
+Description:
+Our customer service RAG system processes support tickets containing customer names,
+emails (john.doe@example.com), and order histories to provide automated responses.
+
+Expected Triggers: GDPR, CCPA, SOC 2
+Expected Sensitivity: 6/10
+
+
+==================================================
+USE CASE 2: Healthcare Patient Records
+==================================================
+Description:
+Patient John Doe (SSN: 123-45-6789) was diagnosed with hypertension and prescribed
+medication. Medical record accessible at patient.records@hospital.com.
+Treatment cost: $5,000 charged to card 4532-1234-5678-9010.
+
+Expected Triggers: HIPAA, GDPR, PCI-DSS
+Expected Sensitivity: 10/10
+
+
+==================================================
+USE CASE 3: Financial Services Document Processing
+==================================================
+Description:
+Process loan applications containing SSN (987-65-4321), account numbers (ACCT12345678),
+credit scores, and payment card information for identity verification.
+
+Expected Triggers: GDPR, CCPA, SOX, GLB, PCI-DSS
+Expected Sensitivity: 9/10
+
+
+==================================================
+USE CASE 4: HR Recruitment System
+==================================================
+Description:
+CONFIDENTIAL - Internal recruitment RAG system processing candidate resumes with names,
+emails (candidates@company.com), phone numbers (555-123-4567), and proprietary interview
+assessments.
+
+Expected Triggers: GDPR, CCPA, ISO 27001
+Expected Sensitivity: 7/10
+
+
+==================================================
+USE CASE 5: Public Documentation Index
+==================================================
+Description:
+Index of open-source software documentation, technical blog posts, and public API references.
+No personal information, all public domain content.
+
+Expected Triggers: None (or minimal SOC 2 for quality)
+Expected Sensitivity: 1/10
+
+
+==================================================
+USE CASE 6: Legal Contract Repository
+==================================================
+Description:
+CONFIDENTIAL - Proprietary contract repository containing NDAs, trade secret agreements,
+patent-pending technology descriptions, and client confidential information.
+Export-controlled technical data included.
+
+Expected Triggers: ISO 27001, NDA
+Expected Sensitivity: 8/10
+
+
+==================================================
+USE CASE 7: E-commerce Order Management
+==================================================
+Description:
+Process customer orders with billing addresses, credit card numbers (4532-1234-5678-9010),
+email confirmations (orders@shop.com), and shipping tracking.
+Customer service contacts: 1-800-555-0199.
+
+Expected Triggers: PCI-DSS, GDPR, CCPA
+Expected Sensitivity: 7/10
+
+
+==================================================
+USE CASE 8: Clinical Research Database
+==================================================
+Description:
+Clinical research database containing patient diagnoses, lab results, treatment outcomes,
+and medication histories. De-identification attempted but some identifiers remain:
+MRN, dates of service, doctor notes.
+
+Expected Triggers: HIPAA, GDPR
+Expected Sensitivity: 9/10
+
+
+==================================================
+USE CASE 9: Marketing Analytics System
+==================================================
+Description:
+Analyze customer behavior from website cookies, email campaign responses
+(marketing@company.com), and purchase patterns. Includes customer emails and browsing history.
+
+Expected Triggers: GDPR, CCPA
+Expected Sensitivity: 5/10
+
+
+==================================================
+USE CASE 10: Multi-Regulation GCC Use Case
+==================================================
+Description:
+Global capability center processing: employee PII (names, SSNs: 111-22-3333),
+payroll data (account numbers, routing: 123456789), health insurance claims
+(patient diagnoses, prescriptions), and proprietary business processes
+(CONFIDENTIAL trade secrets). Payment processing for benefits: card 5432-1098-7654-3210.
+Contact HR at hr.benefits@gcc.com or 555-987-6543.
+
+Expected Triggers: GDPR, CCPA, HIPAA, SOX, PCI-DSS, ISO 27001, GLB
+Expected Sensitivity: 10/10
+
+
+==================================================
+Common Sample Queries
+==================================================
+1. What regulations apply to my customer service chatbot?
+2. Do I need HIPAA compliance if I process medical appointment reminders?
+3. What are the penalties for GDPR violations?
+4. How do I handle credit card data in my RAG system?
+5. What controls are required for SOC 2 compliance?
+6. Can I delete user data from vector embeddings?
+7. What's the difference between PII and PHI?
+8. How do I implement right to be forgotten in RAG?
+9. What audit logging is required for compliance?
+10. Do I need Business Associate Agreements for my vector database vendor?
+
+
+==================================================
+Sample PII Patterns for Testing
+==================================================
+Emails: john.doe@example.com, jane.smith@company.org, contact@website.net
+Phones: 555-123-4567, 1-800-555-0199, (617) 555-9876
+SSNs: 123-45-6789, 987-65-4321, 111-22-3333
+Names: Mr. John Smith, Dr. Jane Doe, Ms. Sarah Johnson
+
+
+==================================================
+Sample PHI Keywords for Testing
+==================================================
+diagnosis, treatment, medication, patient, medical record, prescription, surgery,
+lab results, symptoms, doctor, hospital, clinic, health condition, disease, illness
+
+
+==================================================
+Sample Financial Patterns for Testing
+==================================================
+Credit Cards: 4532-1234-5678-9010, 5432-1098-7654-3210
+Account Numbers: ACCT12345678, ACCT98765432
+Routing Numbers: 123456789, 987654321
+
+
+==================================================
+Sample Proprietary Keywords for Testing
+==================================================
+CONFIDENTIAL, proprietary, trade secret, internal only, restricted, classified,
+patent pending, copyright, NDA
+
+
+==================================================
+Notes
+==================================================
+- These examples are for educational and testing purposes only
+- Consult legal counsel for production compliance requirements
+- Actual compliance depends on jurisdiction, industry, and specific use case
+- This tool provides guidance, not legal advice

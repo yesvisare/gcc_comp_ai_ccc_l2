@@ -1,0 +1,43 @@
+{
+  "assessment_config": {
+    "enable_presidio": false,
+    "enable_openai": false,
+    "confidence_threshold": 0.5,
+    "max_examples_per_type": 5
+  },
+  "regulation_filters": {
+    "include": [
+      "GDPR",
+      "CCPA",
+      "HIPAA",
+      "SOC 2",
+      "ISO 27001",
+      "SOX",
+      "PCI-DSS",
+      "GLB"
+    ],
+    "exclude": []
+  },
+  "risk_scoring": {
+    "pii_weight": 3,
+    "phi_weight": 4,
+    "financial_weight": 3,
+    "proprietary_weight": 2,
+    "combined_pii_financial_bonus": 2,
+    "max_score": 10
+  },
+  "output_preferences": {
+    "include_checklist": true,
+    "include_controls": true,
+    "include_penalties": true,
+    "limit_examples": true
+  },
+  "api_settings": {
+    "timeout": 30,
+    "max_retries": 3,
+    "rate_limit": {
+      "requests_per_minute": 60,
+      "requests_per_hour": 1000
+    }
+  }
+}
