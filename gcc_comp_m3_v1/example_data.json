@@ -1,0 +1,111 @@
+{
+  "sample_metrics_collection": {
+    "tenant_id": "business_unit_001",
+    "documents": [
+      {"doc_id": "doc_001", "pii_detected": true, "pii_types": ["email", "phone"]},
+      {"doc_id": "doc_002", "pii_detected": true, "pii_types": ["ssn"]},
+      {"doc_id": "doc_003", "pii_detected": false, "pii_types": []},
+      {"doc_id": "doc_004", "pii_detected": true, "pii_types": ["email"]},
+      {"doc_id": "doc_005", "pii_detected": false, "pii_types": []}
+    ],
+    "access_logs": [
+      {"user": "user_001", "resource": "/api/query", "authorized": true, "timestamp": "2025-01-15T10:00:00Z"},
+      {"user": "user_002", "resource": "/api/query", "authorized": true, "timestamp": "2025-01-15T10:05:00Z"},
+      {"user": "user_003", "resource": "/api/admin", "authorized": false, "timestamp": "2025-01-15T10:10:00Z"},
+      {"user": "user_004", "resource": "/api/query", "authorized": true, "timestamp": "2025-01-15T10:15:00Z"}
+    ],
+    "events": [
+      {"event_type": "query", "logged": true, "timestamp": "2025-01-15T10:00:00Z"},
+      {"event_type": "ingestion", "logged": true, "timestamp": "2025-01-15T10:05:00Z"},
+      {"event_type": "deletion", "logged": true, "timestamp": "2025-01-15T10:10:00Z"},
+      {"event_type": "query", "logged": false, "timestamp": "2025-01-15T10:15:00Z"}
+    ]
+  },
+  "expected_kpis": {
+    "audit_trail_completeness": {
+      "current_value": 99.9,
+      "target_value": 99.0,
+      "unit": "%",
+      "status": "healthy"
+    },
+    "pii_detection_precision": {
+      "current_value": 95.5,
+      "target_value": 95.0,
+      "unit": "%",
+      "status": "healthy"
+    },
+    "pii_detection_recall": {
+      "current_value": 99.2,
+      "target_value": 99.0,
+      "unit": "%",
+      "status": "healthy"
+    },
+    "access_control_violations": {
+      "current_value": 0.01,
+      "target_value": 0.1,
+      "unit": "%",
+      "status": "healthy"
+    },
+    "encryption_coverage": {
+      "current_value": 100.0,
+      "target_value": 100.0,
+      "unit": "%",
+      "status": "healthy"
+    },
+    "certificate_expiry_days": {
+      "current_value": 45,
+      "target_value": 30,
+      "unit": "days",
+      "status": "healthy"
+    }
+  },
+  "multi_tenant_examples": [
+    {
+      "tenant_id": "finance_dept",
+      "industry": "financial_services",
+      "regulations": ["SOX", "GLBA"],
+      "data_classification": "highly_confidential"
+    },
+    {
+      "tenant_id": "healthcare_dept",
+      "industry": "healthcare",
+      "regulations": ["HIPAA", "HITECH"],
+      "data_classification": "protected_health_information"
+    },
+    {
+      "tenant_id": "marketing_dept",
+      "industry": "marketing",
+      "regulations": ["GDPR", "CCPA"],
+      "data_classification": "personal_data"
+    },
+    {
+      "tenant_id": "engineering_dept",
+      "industry": "technology",
+      "regulations": ["ISO27001", "SOC2"],
+      "data_classification": "confidential"
+    }
+  ],
+  "soc2_control_mappings": {
+    "CC6.1": "Logical and Physical Access Controls",
+    "CC6.6": "Encryption of Data",
+    "CC7.2": "System Monitoring",
+    "CC7.3": "Evaluation and Response to Security Events",
+    "CC7.4": "Response to Identified Security Incidents"
+  },
+  "sample_alerts": [
+    {
+      "alert_name": "audit_trail_completeness_violation",
+      "severity": "critical",
+      "threshold": 99.0,
+      "current_value": 98.5,
+      "notification_channels": ["pagerduty", "slack_compliance", "email_oncall"]
+    },
+    {
+      "alert_name": "access_control_violations_high",
+      "severity": "warning",
+      "threshold": 0.1,
+      "current_value": 0.15,
+      "notification_channels": ["slack_compliance", "email_team"]
+    }
+  ]
+}

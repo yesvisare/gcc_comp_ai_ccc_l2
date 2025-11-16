@@ -1,0 +1,47 @@
+{
+  "dashboard_config": {
+    "refresh_interval": "15s",
+    "time_range": "24h",
+    "timezone": "UTC"
+  },
+  "prometheus_queries": {
+    "audit_trail_completeness": "sum(audit_events_logged) / sum(audit_events_total) * 100",
+    "pii_detection_rate": "sum(pii_items_detected) / sum(documents_processed) * 100",
+    "access_violations": "sum(access_denied) / sum(access_attempts) * 100",
+    "encryption_coverage": "sum(encrypted_records) / sum(total_records) * 100"
+  },
+  "alert_rules": {
+    "audit_completeness_critical": {
+      "condition": "audit_trail_completeness < 99",
+      "severity": "critical",
+      "cooldown": "5m",
+      "notification_channels": ["pagerduty", "slack"]
+    },
+    "pii_detection_warning": {
+      "condition": "pii_detection_precision < 95",
+      "severity": "warning",
+      "cooldown": "15m",
+      "notification_channels": ["slack"]
+    }
+  },
+  "stakeholder_dashboards": {
+    "cfo": {
+      "panels": ["audit_readiness", "compliance_cost", "soc2_coverage"],
+      "focus": "audit_and_cost"
+    },
+    "cto": {
+      "panels": ["encryption_coverage", "certificate_expiry", "access_violations"],
+      "focus": "technical_health"
+    },
+    "compliance_officer": {
+      "panels": ["pii_detection", "violation_trends", "policy_compliance", "regulatory_coverage"],
+      "focus": "regulatory_adherence"
+    }
+  },
+  "multi_tenant_settings": {
+    "isolation_level": "namespace",
+    "metrics_prefix": "gcc_compliance",
+    "tenant_label": "business_unit",
+    "aggregation_interval": "1m"
+  }
+}
