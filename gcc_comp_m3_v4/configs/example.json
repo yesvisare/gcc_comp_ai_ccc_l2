@@ -1,0 +1,23 @@
+{
+  "incident_classification_rules": {
+    "p0_thresholds": {
+      "affected_users": 1000,
+      "data_sensitivity": ["CONFIDENTIAL", "RESTRICTED"],
+      "service_impact": "FULL"
+    },
+    "p1_thresholds": {
+      "affected_users": 100,
+      "data_sensitivity": ["CONFIDENTIAL"],
+      "service_impact": "PARTIAL"
+    }
+  },
+  "notification_settings": {
+    "gdpr_deadline_hours": 72,
+    "dpa_email": "dpa@example.com",
+    "auto_notify": false
+  },
+  "multi_tenant_config": {
+    "default_tenant_id": "tenant-default",
+    "isolation_enabled": true
+  }
+}

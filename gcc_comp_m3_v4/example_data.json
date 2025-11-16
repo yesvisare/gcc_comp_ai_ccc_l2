@@ -1,0 +1,144 @@
+{
+  "sample_incidents": [
+    {
+      "description": "P0 Critical: Large-scale data breach affecting customer PII",
+      "tenant_id": "tenant-enterprise-a",
+      "incident_type": "DATA_BREACH",
+      "affected_users_count": 2500,
+      "data_sensitivity": "RESTRICTED",
+      "service_impact": "PARTIAL",
+      "expected_severity": "P0_CRITICAL",
+      "notification_required": true
+    },
+    {
+      "description": "P1 High: Unauthorized access to financial records",
+      "tenant_id": "tenant-finance-b",
+      "incident_type": "UNAUTHORIZED_ACCESS",
+      "affected_users_count": 150,
+      "data_sensitivity": "CONFIDENTIAL",
+      "service_impact": "PARTIAL",
+      "expected_severity": "P1_HIGH",
+      "notification_required": true
+    },
+    {
+      "description": "P2 Medium: Security policy violation detected",
+      "tenant_id": "tenant-startup-c",
+      "incident_type": "SECURITY_VIOLATION",
+      "affected_users_count": 25,
+      "data_sensitivity": "INTERNAL",
+      "service_impact": "NONE",
+      "expected_severity": "P2_MEDIUM",
+      "notification_required": false
+    },
+    {
+      "description": "P3 Low: Configuration drift in non-production environment",
+      "tenant_id": "tenant-dev-d",
+      "incident_type": "COMPLIANCE_FAILURE",
+      "affected_users_count": 3,
+      "data_sensitivity": "PUBLIC",
+      "service_impact": "NONE",
+      "expected_severity": "P3_LOW",
+      "notification_required": false
+    },
+    {
+      "description": "P0 Critical: Full service outage affecting all users",
+      "tenant_id": "tenant-saas-e",
+      "incident_type": "SERVICE_OUTAGE",
+      "affected_users_count": 5000,
+      "data_sensitivity": "INTERNAL",
+      "service_impact": "FULL",
+      "expected_severity": "P0_CRITICAL",
+      "notification_required": true
+    },
+    {
+      "description": "P1 High: PII exposure through misconfigured API endpoint",
+      "tenant_id": "tenant-healthtech-f",
+      "incident_type": "PII_EXPOSURE",
+      "affected_users_count": 200,
+      "data_sensitivity": "CONFIDENTIAL",
+      "service_impact": "NONE",
+      "expected_severity": "P1_HIGH",
+      "notification_required": true
+    }
+  ],
+  "response_workflow_example": {
+    "incident_id": "INC-ente-a1b2c3d4",
+    "phases": [
+      {
+        "phase": "detection",
+        "timestamp": "2025-11-16T10:00:00Z",
+        "action": "Automated monitoring system detected unusual API access pattern"
+      },
+      {
+        "phase": "containment",
+        "timestamp": "2025-11-16T10:15:00Z",
+        "actions": [
+          "Blocked suspicious IP addresses",
+          "Revoked compromised API keys",
+          "Isolated affected tenant database"
+        ]
+      },
+      {
+        "phase": "investigation",
+        "timestamp": "2025-11-16T11:30:00Z",
+        "findings": "Attacker exploited CVE-2024-12345 in authentication service to gain unauthorized access"
+      },
+      {
+        "phase": "eradication",
+        "timestamp": "2025-11-16T13:00:00Z",
+        "actions": [
+          "Applied security patch for CVE-2024-12345",
+          "Rotated all authentication tokens",
+          "Implemented additional input validation"
+        ]
+      },
+      {
+        "phase": "recovery",
+        "timestamp": "2025-11-16T14:30:00Z",
+        "steps": [
+          "Restored tenant database access",
+          "Re-enabled API endpoints with enhanced monitoring",
+          "Verified all services operational"
+        ]
+      },
+      {
+        "phase": "post_mortem",
+        "timestamp": "2025-11-16T16:00:00Z",
+        "lessons_learned": "Authentication service lacked automated vulnerability scanning",
+        "preventive_measures": [
+          "Integrate SAST/DAST tools into CI/CD pipeline",
+          "Implement automated patch management",
+          "Schedule quarterly security reviews"
+        ]
+      }
+    ]
+  },
+  "notification_examples": {
+    "gdpr_regulatory": {
+      "recipient": "dpa@example.eu",
+      "notification_type": "REGULATORY",
+      "regulation": "GDPR",
+      "trigger": "Data breach affecting 500+ EU residents",
+      "deadline_hours": 72
+    },
+    "dpdpa_regulatory": {
+      "recipient": "dpdpa@india.gov",
+      "notification_type": "REGULATORY",
+      "regulation": "DPDPA",
+      "trigger": "Personal data breach affecting Indian residents",
+      "deadline_hours": 72
+    },
+    "user_notification": {
+      "recipient": "affected.user@example.com",
+      "notification_type": "USER",
+      "regulation": "GDPR",
+      "trigger": "High risk to rights and freedoms (GDPR Article 34)",
+      "deadline_hours": 72
+    }
+  },
+  "metadata": {
+    "source": "L3_M3.4_examples",
+    "purpose": "Demonstration and testing",
+    "last_updated": "2025-11-16"
+  }
+}

@@ -1,0 +1,197 @@
+L3 M3.4: Incident Response & Breach Notification
+Example Incident Scenarios
+
+=== P0 CRITICAL INCIDENTS ===
+
+1. Mass Data Breach
+   - 2,500 customer records exposed via SQL injection
+   - Data types: email, phone, address, SSN
+   - Requires immediate DPA notification (GDPR Article 33)
+   - Estimated impact: $2M+ in fines + reputational damage
+
+2. Complete Service Outage
+   - RAG system offline for 4+ hours
+   - 5,000 users unable to access critical documents
+   - Revenue impact: $50K/hour
+   - SLA violation for enterprise clients
+
+3. Ransomware Attack
+   - Production database encrypted by attacker
+   - 10,000 users affected
+   - Ransom demand: 50 BTC ($2.5M)
+   - Requires law enforcement notification
+
+=== P1 HIGH INCIDENTS ===
+
+4. Unauthorized Admin Access
+   - Former employee retains admin credentials
+   - 150 confidential documents accessed
+   - No data exfiltration detected
+   - Requires user notification
+
+5. API Authentication Bypass
+   - Security vulnerability allows unauthenticated API access
+   - 200 users potentially affected
+   - Partial service degradation during patching
+   - Requires security advisory
+
+6. PII Exposure via Misconfigured S3 Bucket
+   - Customer data publicly accessible for 6 hours
+   - 300 records exposed (names, emails, order history)
+   - Discovered during routine security scan
+   - GDPR notification required
+
+=== P2 MEDIUM INCIDENTS ===
+
+7. Failed Login Attacks
+   - 500 failed login attempts from single IP
+   - 25 user accounts temporarily locked
+   - Attack blocked by rate limiting
+   - No data exposure
+
+8. Compliance Policy Violation
+   - Developer accidentally commits API keys to GitHub
+   - Keys revoked within 30 minutes
+   - No unauthorized usage detected
+   - Internal security training required
+
+9. Phishing Campaign
+   - 50 employees receive targeted phishing emails
+   - 3 employees click malicious link
+   - No credentials compromised
+   - Enhanced email filtering implemented
+
+=== P3 LOW INCIDENTS ===
+
+10. Configuration Drift
+    - Non-production database missing encryption
+    - 2 test users affected
+    - No sensitive data in test environment
+    - Corrected via automated compliance scan
+
+11. Minor Security Scan Finding
+    - Outdated SSL certificate on internal tool
+    - 5 internal users affected
+    - No external exposure
+    - Certificate renewed
+
+12. Log Retention Gap
+    - Audit logs for development environment deleted prematurely
+    - No regulatory requirement for dev logs
+    - Process documentation updated
+
+=== BREACH NOTIFICATION SCENARIOS ===
+
+GDPR Article 33 - DPA Notification:
+- Deadline: 72 hours from breach discovery
+- Required info: Nature of breach, affected data categories, approximate number of data subjects
+- Contact: Data Protection Authority in EU member state
+
+GDPR Article 34 - User Notification:
+- Trigger: High risk to rights and freedoms
+- Required info: Nature of breach, contact point, likely consequences, measures taken
+- Method: Direct communication (email, letter)
+
+DPDPA - India Breach Notification:
+- Deadline: As soon as possible (typically 72 hours)
+- Authority: Data Protection Board of India
+- Required info: Personal data affected, remedial actions, contact details
+
+HIPAA - US Healthcare Breach Notification:
+- Deadline: 60 days from discovery
+- Threshold: 500+ affected individuals
+- Authority: HHS Office for Civil Rights
+
+=== INCIDENT RESPONSE WORKFLOW EXAMPLE ===
+
+Incident: Unauthorized database access by compromised employee credentials
+
+Phase 1: DETECTION (10:00 AM)
+- SIEM alert: Unusual query pattern from employee account
+- Automated system flags 200+ SELECT queries in 5 minutes
+- Security team notified via PagerDuty
+
+Phase 2: CONTAINMENT (10:15 AM)
+- Disable compromised employee account
+- Revoke active session tokens
+- Block IP address (203.0.113.45)
+- Isolate affected database (read-only mode)
+
+Phase 3: INVESTIGATION (10:30 AM - 12:00 PM)
+- Review audit logs: 250 queries executed
+- Affected tables: customers, orders, payment_methods
+- Data accessed: 1,500 customer records
+- Attack vector: Phishing email compromised credentials
+
+Phase 4: ERADICATION (12:00 PM - 2:00 PM)
+- Force password reset for all employees
+- Implement 2FA requirement
+- Remove malware from compromised workstation
+- Patch authentication vulnerability
+
+Phase 5: RECOVERY (2:00 PM - 3:00 PM)
+- Restore database to read-write mode
+- Re-enable legitimate user access
+- Monitor for 24 hours for recurrence
+- Update security monitoring rules
+
+Phase 6: POST-MORTEM (Next day)
+- Timeline documented: 10:00 AM detection → 3:00 PM resolution (5 hours)
+- Root cause: Employee clicked phishing link, no 2FA
+- Lessons learned: Need mandatory 2FA, enhanced phishing training
+- Preventive measures: Roll out 2FA org-wide, quarterly security training
+
+=== MULTI-TENANT ISOLATION EXAMPLES ===
+
+Tenant A (Enterprise):
+- Incident: P0 data breach
+- Affected users: 2,000
+- Isolation: Tenant A incidents not visible to Tenant B
+- Notification: Separate DPA notification for Tenant A only
+
+Tenant B (Startup):
+- Incident: P3 configuration issue
+- Affected users: 5
+- Isolation: Separate incident tracking
+- Notification: No regulatory notification required
+
+Tenant C (Healthcare):
+- Incident: P1 HIPAA violation
+- Affected users: 300
+- Isolation: HIPAA-specific notification workflow
+- Notification: HHS OCR notification + patient notification
+
+=== REGULATORY DEADLINES ===
+
+GDPR (EU): 72 hours from discovery
+DPDPA (India): As soon as possible (typically 72 hours)
+HIPAA (US): 60 days from discovery (500+ affected)
+CCPA (California): Without unreasonable delay
+PIPEDA (Canada): As soon as feasible
+LGPD (Brazil): Reasonable time period
+
+=== COMMON CONTAINMENT ACTIONS ===
+
+1. Account/Access Control
+   - Disable user accounts
+   - Revoke API keys/tokens
+   - Reset passwords
+   - Implement IP blocklists
+
+2. Network Isolation
+   - Isolate affected systems
+   - Block malicious traffic
+   - Enable WAF rules
+   - Segment network
+
+3. Service Controls
+   - Enable read-only mode
+   - Disable vulnerable endpoints
+   - Apply rate limiting
+   - Activate DDoS protection
+
+4. Data Protection
+   - Revoke data access grants
+   - Encrypt exposed data
+   - Backup affected systems
+   - Enable audit logging
