@@ -1,0 +1,86 @@
+Sample Text Data for L3 M3.2: Automated Compliance Testing
+
+=== Clean Text Examples ===
+
+Example 1: Compliance Policy Documentation
+This document outlines the compliance framework for RAG systems in financial services.
+All data must be validated against PII detection policies before embedding.
+
+Example 2: GDPR Requirements
+Article 17 of GDPR grants individuals the right to request deletion of personal data.
+Organizations must implement technical measures to honor such requests within 30 days.
+
+Example 3: DPDPA Section 12 Overview
+The Digital Personal Data Protection Act requires data minimization principles.
+Only necessary data should be collected and processed for legitimate purposes.
+
+=== PII Examples (Test Data - Do Not Use in Production) ===
+
+Example 4: SSN Pattern
+Customer Social Security Number: 123-45-6789
+This would violate GDPR Article 17 and DPDPA Section 12.
+
+Example 5: Email Pattern
+Contact support at: compliance-team@example.com
+Primary contact: john.doe@financial-services.org
+
+Example 6: Credit Card Pattern
+Payment card: 4532-1234-5678-9010
+Alternative format: 4532123456789010
+
+Example 7: Phone Pattern
+Hotline: (555) 123-4567
+Alternative: 555-987-6543
+International: +1-555-234-5678
+
+=== Redacted Examples (Compliant) ===
+
+Example 8: Properly Redacted Customer Record
+Customer Name: [REDACTED]
+SSN: [REDACTED]
+Email: [REDACTED]
+Phone: [REDACTED]
+Account Status: Active
+
+Example 9: Partial Redaction (Non-Compliant)
+Customer SSN: [REDACTED]
+But email remains: customer@company.com
+This partial redaction violates policy.
+
+=== Regulatory Context Examples ===
+
+Example 10: SOX Compliance
+Sarbanes-Oxley Act requires 7-year retention for financial audit records.
+Automated testing ensures retention policies are enforced in CI/CD.
+
+Example 11: SOC 2 Type II
+Service Organization Control 2 certification requires continuous monitoring.
+Automated compliance tests provide evidence of control persistence.
+
+Example 12: ISO 27001
+Information security management standard requires documented procedures.
+Policy-as-code provides auditable compliance evidence.
+
+=== Test Scenarios ===
+
+Scenario 1: Embedding Clean Text
+Input: "Financial regulations require proper documentation."
+Expected: Allow (no PII detected)
+
+Scenario 2: Embedding Unredacted PII
+Input: "Customer SSN is 123-45-6789"
+Expected: Deny (PII detected without redaction)
+
+Scenario 3: Embedding Redacted PII
+Input: "Customer SSN is [REDACTED]"
+Expected: Allow (PII properly redacted)
+
+Scenario 4: Query Without PII
+Input: "What are GDPR compliance requirements?"
+Expected: Allow (no PII in query)
+
+Scenario 5: Multiple PII Types
+Input: "SSN: 123-45-6789, Email: test@example.com, Phone: 555-1234"
+Expected: Deny (multiple PII types detected)
+
+=== End of Sample Data ===

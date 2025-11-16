@@ -1,0 +1,107 @@
+{
+  "test_cases": [
+    {
+      "id": 1,
+      "name": "Clean Document",
+      "text": "This document describes compliance policies for data handling and retention.",
+      "operation": "embed",
+      "expected_allow": true,
+      "pii_types": []
+    },
+    {
+      "id": 2,
+      "name": "Document with SSN",
+      "text": "Customer profile: Name Jane Doe, SSN 123-45-6789, Account active.",
+      "operation": "embed",
+      "expected_allow": false,
+      "pii_types": ["ssn"]
+    },
+    {
+      "id": 3,
+      "name": "Document with Email",
+      "text": "Contact information: john.doe@example.com for support inquiries.",
+      "operation": "query",
+      "expected_allow": false,
+      "pii_types": ["email"]
+    },
+    {
+      "id": 4,
+      "name": "Document with Credit Card",
+      "text": "Payment method on file: Card ending in 9010, full number 4532-1234-5678-9010.",
+      "operation": "store",
+      "expected_allow": false,
+      "pii_types": ["credit_card"]
+    },
+    {
+      "id": 5,
+      "name": "Document with Phone",
+      "text": "For urgent matters, call our hotline at (555) 123-4567 during business hours.",
+      "operation": "embed",
+      "expected_allow": false,
+      "pii_types": ["phone"]
+    },
+    {
+      "id": 6,
+      "name": "Properly Redacted Document",
+      "text": "Customer profile: Name [REDACTED], SSN [REDACTED], Email [REDACTED].",
+      "operation": "embed",
+      "expected_allow": true,
+      "pii_types": [],
+      "metadata": {"pii_redacted": true}
+    },
+    {
+      "id": 7,
+      "name": "Multiple PII Types",
+      "text": "Account holder SSN: 987-65-4321, Email: customer@example.com, Phone: 555-987-6543.",
+      "operation": "embed",
+      "expected_allow": false,
+      "pii_types": ["ssn", "email", "phone"]
+    },
+    {
+      "id": 8,
+      "name": "Partial Redaction (Invalid)",
+      "text": "Customer SSN [REDACTED] but email remains: support@company.com.",
+      "operation": "store",
+      "expected_allow": false,
+      "pii_types": ["email"]
+    },
+    {
+      "id": 9,
+      "name": "Compliance Query",
+      "text": "What are the GDPR Article 17 requirements for right to be forgotten?",
+      "operation": "query",
+      "expected_allow": true,
+      "pii_types": []
+    },
+    {
+      "id": 10,
+      "name": "Financial Document Clean",
+      "text": "Q4 revenue report shows 15% growth in compliance services segment.",
+      "operation": "embed",
+      "expected_allow": true,
+      "pii_types": []
+    },
+    {
+      "id": 11,
+      "name": "DPDPA Compliance Context",
+      "text": "Section 12 of DPDPA requires data minimization and purpose limitation.",
+      "operation": "query",
+      "expected_allow": true,
+      "pii_types": []
+    },
+    {
+      "id": 12,
+      "name": "SOX Retention Policy",
+      "text": "SOX mandates 7-year retention for financial audit records.",
+      "operation": "embed",
+      "expected_allow": true,
+      "pii_types": []
+    }
+  ],
+  "metadata": {
+    "source": "L3_M3.2_Automated_Compliance_Testing",
+    "purpose": "Test data for PII detection and policy evaluation",
+    "total_cases": 12,
+    "compliance_standards": ["GDPR", "DPDPA", "SOX", "SOC 2", "ISO 27001"]
+  }
+}

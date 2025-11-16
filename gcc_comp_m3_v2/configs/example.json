@@ -1,0 +1,39 @@
+{
+  "opa_config": {
+    "binary_path": "opa",
+    "policy_path": "./policies",
+    "data_path": "./data",
+    "enabled": false
+  },
+  "presidio_config": {
+    "enabled": false,
+    "entities": [
+      "US_SSN",
+      "EMAIL_ADDRESS",
+      "CREDIT_CARD",
+      "PHONE_NUMBER"
+    ],
+    "threshold": 0.5
+  },
+  "test_settings": {
+    "run_on_startup": false,
+    "coverage_threshold": 95.0,
+    "test_types": [
+      "pii_detection",
+      "access_control",
+      "audit_logging",
+      "data_retention",
+      "regression"
+    ]
+  },
+  "api_settings": {
+    "timeout": 30,
+    "max_retries": 3,
+    "host": "0.0.0.0",
+    "port": 8000
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  }
+}
