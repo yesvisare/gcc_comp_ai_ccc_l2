@@ -1,0 +1,38 @@
+# Core dependencies
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+python-dotenv==1.0.0
+pytest==7.4.4
+
+# Data processing
+pandas==2.1.4
+numpy==1.26.3
+
+# Excel reporting
+openpyxl==3.1.2
+
+# Optional: DPA clause detection (local NLP model)
+sentence-transformers==2.3.1
+
+# Optional: PDF parsing for DPA analysis
+pdfplumber==0.10.4
+pypdf2==3.0.1
+
+# Optional: Vendor API integrations
+requests==2.31.0
+
+# Optional: Database (for production deployments)
+# Uncomment if using PostgreSQL for vendor registry
+# psycopg2-binary==2.9.9
+
+# Optional: Reporting and notifications
+# reportlab==4.0.9  # PDF generation
+# slack-sdk==3.26.2  # Slack notifications
+
+# Logging and utilities
+structlog==24.1.0
+
+# Development dependencies
+jupyter==1.0.0
+ipykernel==6.29.0

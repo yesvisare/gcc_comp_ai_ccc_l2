@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Reports and outputs
+reports/
+*.xlsx
+*.pdf
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Project-specific
+configs/*.json
+!configs/example.json
+
+# Logs
+*.log
+logs/
+
+# sentence-transformers cache
+.cache/
+models/

@@ -1,0 +1,143 @@
+Vendor Risk Assessment - Sample Scenarios
+
+SCENARIO 1: Low Risk Vendor (OpenAI)
+- SOC 2 Type II: Current (6 months old)
+- ISO 27001: Certified
+- Penetration Testing: Recent (3 months ago)
+- Security Breaches: None in past 3 years
+- GDPR Compliant: Yes, with DPA available
+- Data Deletion: Automated and verified
+- SLA: 99.9% uptime guarantee
+- Data Centers: US, EU, Asia (customer-selectable)
+- Expected Risk Level: LOW RISK (90-100 score)
+- Recommendation: APPROVED for production use
+
+SCENARIO 2: Medium Risk Vendor (Pinecone)
+- SOC 2 Type II: Current (5 months old)
+- ISO 27001: Certified
+- Penetration Testing: Recent (2 months ago)
+- Security Breaches: None
+- GDPR Compliant: Yes, with DPA available
+- Data Deletion: Automated and verified
+- SLA: 99.9% uptime guarantee
+- Data Centers: US, EU (customer-selectable)
+- Support: 4-hour response time (slower than OpenAI)
+- Data Policy: Basic transparency (score 2/3)
+- Expected Risk Level: MEDIUM RISK (70-89 score)
+- Recommendation: APPROVED WITH CONDITIONS
+
+SCENARIO 3: High Risk Vendor (Cloud Provider with Breach History)
+- SOC 2 Type II: Current
+- ISO 27001: Certified
+- Penetration Testing: Recent
+- Security Breaches: 1 major breach in past 3 years (Capital One incident)
+- GDPR Compliant: Yes, with DPA
+- SLA: 99.99% uptime (excellent reliability)
+- Industry Certifications: SOC 2, ISO 27001, PCI-DSS, HIPAA BAA, FedRAMP
+- Expected Risk Level: MEDIUM-HIGH RISK (75-85 score)
+- Recommendation: APPROVED WITH CONDITIONS (additional monitoring, configuration controls)
+- Note: Despite breach, strong certifications and reliability may justify approval with mitigations
+
+SCENARIO 4: Critical Risk Vendor (Should Be Rejected)
+- SOC 2 Type II: Expired (30 months old)
+- ISO 27001: Not certified
+- Penetration Testing: Outdated (18 months ago)
+- Security Breaches: 3 breaches in past 3 years
+- GDPR Compliant: No DPA available
+- Data Deletion: Unclear process
+- Regulatory Violations: 2 violations in past 5 years
+- SLA: 99.0% (missed - actual 98.5%)
+- Support: 24-hour response time
+- DR/BC Plan: None documented
+- Expected Risk Level: CRITICAL RISK (0-49 score)
+- Recommendation: REJECTED - Seek alternative vendor
+
+FAILURE SCENARIOS FROM REAL WORLD:
+
+Capital One Breach (2019)
+Vendor: AWS (cloud provider)
+Issue: Misconfigured firewall exposed 100M customer records
+Lesson: Cloud provider misconfiguration = your breach
+Cost: $80M OCC fine + $190M class action settlement
+GCC Impact: Must implement vendor configuration monitoring
+
+Facebook-Cambridge Analytica (2018)
+Vendor: Facebook (data sharing partner)
+Issue: Vendor misused shared data
+Lesson: Vendor data handling violations are your violations
+Cost: £500K UK fine + $5B US FTC fine
+GCC Impact: DPA clauses must explicitly prohibit data resale/reuse
+
+SolarWinds Supply Chain Attack (2020)
+Vendor: SolarWinds (software provider)
+Issue: Compromised update mechanism affected 18,000 organizations
+Lesson: Vendor compromises propagate to all customers
+GCC Impact: Subprocessor tracking and software supply chain monitoring critical
+
+MOVEit Transfer Vulnerability (2023)
+Vendor: Progress Software (file transfer tool)
+Issue: Zero-day vulnerability affected 2,600+ organizations, 77M+ individuals
+Lesson: Single vulnerable vendor tool affects thousands simultaneously
+GCC Impact: Continuous monitoring for vendor security advisories mandatory
+
+DPA ESSENTIAL CLAUSES (12 Required):
+
+1. Data scope and processing activities
+2. Purpose limitation (vendor can ONLY use data for specified purposes)
+3. Technical and organizational security measures
+4. Subprocessor approval requirements
+5. Data subject rights assistance (access, deletion, etc.)
+6. Breach notification (24-72 hours)
+7. Data location specifications
+8. Cross-border transfer safeguards (Standard Contractual Clauses)
+9. Audit rights
+10. Data deletion timelines and verification
+11. Liability assignments
+12. Termination and data return procedures
+
+CONTINUOUS MONITORING CHECKLIST:
+
+Weekly:
+- Check vendor status pages for incidents
+- Monitor uptime metrics vs. SLA commitments
+
+Monthly:
+- Review vendor security advisories
+- Check for subprocessor changes (vendor transparency reports)
+
+Quarterly:
+- Re-evaluate risk scores (certifications may expire)
+- Update vendor registry with new assessments
+
+Annually:
+- Request updated SOC 2 Type II reports
+- Verify ISO 27001 certification renewal
+- Conduct DPA review for term changes
+- Audit vendor access logs
+
+DECISION CARD SUMMARY:
+
+WHEN TO USE:
+- Evaluating new vendors before procurement
+- Re-evaluating existing vendors quarterly
+- Assessing vendors when compliance requirements change
+- During security incident investigations
+- Preparing for external audits (SOX, ISO, GDPR)
+- Vendor contract renewals
+
+WHEN NOT TO USE:
+- For vendors already rejected by executive team
+- For internal teams (not third-party vendors)
+- Replacing legal review of contracts (assists, doesn't replace attorney)
+
+KEY TRADE-OFFS:
+- High security weight (30%) means vendors with excellent privacy but older SOC 2 score lower
+- Automated DPA checker imperfect (threshold >0.8 similarity) - attorney final review required
+- All-or-nothing SLA thresholds (99.85% drops to medium score despite being close to 99.9%)
+- Subprocessor deep dive creates compliance burden but GDPR Article 28(4) requires it
+
+COST VS. BENEFIT:
+Implementation: 40-60 hours
+Ongoing: ₹10K/month ($120) infrastructure + 5-10 hours/month monitoring
+Benefit: Prevent vendor-caused breaches ($80M+ fines), satisfy auditor requirements
+ROI: 12-to-1 in year one if it prevents one major vendor-caused breach

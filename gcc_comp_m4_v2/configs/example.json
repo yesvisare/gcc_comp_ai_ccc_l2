@@ -1,0 +1,29 @@
+{
+  "assessment_settings": {
+    "category_weights": {
+      "security": 0.30,
+      "privacy": 0.25,
+      "compliance": 0.20,
+      "reliability": 0.15,
+      "data_residency": 0.10
+    },
+    "risk_thresholds": {
+      "low_risk": 90,
+      "medium_risk": 70,
+      "high_risk": 50,
+      "critical_risk": 0
+    },
+    "review_frequency_days": 90
+  },
+  "notification_settings": {
+    "email_enabled": false,
+    "slack_enabled": false,
+    "email_recipients": [],
+    "slack_webhook_url": ""
+  },
+  "continuous_monitoring": {
+    "enabled": false,
+    "check_frequency_hours": 168,
+    "vendor_status_apis": []
+  }
+}
