@@ -1,0 +1,94 @@
+Sample RAG Queries for Audit Logging Testing
+============================================
+
+Financial Queries (SOX-Relevant, Confidential)
+-----------------------------------------------
+What were the Q4 2024 revenue figures for the EMEA region?
+Show me all transactions over $1M in December 2024
+What is the current status of our accounts receivable?
+Generate a summary of capital expenditures for fiscal year 2024
+Compare revenue growth year-over-year for product line A
+
+HR Queries (PII-Sensitive, Internal)
+-------------------------------------
+What is the average tenure of software engineers?
+Show me the organizational structure for the engineering department
+What benefits are available to remote employees?
+Summarize performance review feedback themes
+What is the headcount growth plan for Q1 2025?
+
+Legal Queries (Restricted, Legal Hold)
+---------------------------------------
+Summarize pending litigation cases
+What are our obligations under the ACME vendor contract?
+Show me all NDAs signed in 2024
+What is our liability exposure for product XYZ?
+Review compliance requirements for GDPR Article 17
+
+Analytics Queries (Internal, Public)
+-------------------------------------
+What is the average customer satisfaction score?
+Show me user engagement trends for the mobile app
+What are the top 5 feature requests from customers?
+Analyze churn rate patterns by customer segment
+What is the conversion rate for the latest marketing campaign?
+
+System Operations (Internal)
+-----------------------------
+What is the current database replication lag?
+Show me API error rates for the past 24 hours
+What is the average query latency for RAG operations?
+List all scheduled maintenance windows for this month
+What is the current disk usage for audit log storage?
+
+Access Control Scenarios (Audit Required)
+------------------------------------------
+ALLOW: Finance analyst accessing financial reports
+DENY: Contractor requesting access to confidential data
+ALLOW: Legal counsel accessing litigation documents
+DENY: Engineer attempting to access employee PII
+ALLOW: Executive accessing cross-departmental analytics
+DENY: External auditor requesting system credentials
+ALLOW: Data scientist querying anonymized customer data
+DENY: Temporary employee accessing restricted compliance data
+
+Error Scenarios (Error Audit)
+------------------------------
+Vector database timeout after 30 seconds
+LLM API rate limit exceeded - retrying with backoff
+Document retrieval failed - insufficient access permissions
+Audit log write failed - database connection lost
+Hash chain verification failed - potential tampering detected
+S3 archival failed - bucket permissions insufficient
+SIEM integration timeout - Splunk HEC unreachable
+
+Compliance Flag Examples
+-------------------------
+SOX_RELEVANT: Financial data access requiring audit trail
+PII: Personally identifiable information accessed
+MNPI: Material non-public information (insider trading concern)
+LEGAL_HOLD: Data subject to legal preservation order
+HIPAA_PHI: Protected health information (healthcare context)
+PCI_DSS: Payment card data access
+EXPORT_CONTROL: Data subject to export restrictions
+ATTORNEY_CLIENT: Attorney-client privileged communication
+
+Multi-Tenant Scenarios
+----------------------
+Finance tenant: Quarterly earnings analysis
+HR tenant: Headcount planning
+Legal tenant: Contract review
+IT tenant: Infrastructure monitoring
+Analytics tenant: Customer behavior analysis
+Marketing tenant: Campaign performance
+Sales tenant: Pipeline forecasting
+Product tenant: Feature usage analytics
+
+Retention Policy Test Cases
+----------------------------
+Hot storage (0-90 days): Recent queries in PostgreSQL
+Warm storage (91-365 days): Recent year in S3 Standard
+Cold storage (366-2555 days): 7-year archive in S3 Glacier
+Deletion prohibited: Cannot delete any audit logs
+Archival only: Admin can move to cold storage, never delete
+Compliance verification: Annual audit trail integrity check

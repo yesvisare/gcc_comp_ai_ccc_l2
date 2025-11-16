@@ -1,0 +1,35 @@
+{
+  "audit_logging_config": {
+    "immutability_mode": "postgresql",
+    "enable_hash_chain": true,
+    "retention_policy": {
+      "hot_storage_days": 90,
+      "warm_storage_days": 365,
+      "cold_storage_days": 2555
+    },
+    "multi_tenant": {
+      "enabled": true,
+      "default_tenant": "default",
+      "tenant_isolation": "strict"
+    }
+  },
+  "siem_integration": {
+    "enabled": false,
+    "platform": "splunk",
+    "batch_size": 100,
+    "retry_policy": {
+      "max_retries": 3,
+      "backoff_seconds": [2, 4, 8]
+    }
+  },
+  "performance_tuning": {
+    "db_connection_pool_size": 10,
+    "s3_upload_concurrency": 5,
+    "log_buffer_size": 1000
+  },
+  "compliance_settings": {
+    "auto_classify_data": true,
+    "require_compliance_flags": ["SOX_RELEVANT", "PII", "MNPI"],
+    "enforce_user_attribution": true
+  }
+}

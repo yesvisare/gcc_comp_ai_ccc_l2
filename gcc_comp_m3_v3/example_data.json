@@ -1,0 +1,198 @@
+{
+  "sample_audit_events": [
+    {
+      "event_type": "RAG_QUERY",
+      "user_id": "emp-5678",
+      "user_role": "analyst",
+      "user_department": "finance",
+      "tenant_id": "finance",
+      "data": {
+        "query": "What were the Q4 2024 revenue figures for the EMEA region?",
+        "query_hash": "sha256:abc123...",
+        "client_ip": "10.0.1.45",
+        "user_agent": "Mozilla/5.0"
+      },
+      "data_classification": "CONFIDENTIAL",
+      "compliance_flags": ["SOX_RELEVANT", "FINANCIAL_DATA"]
+    },
+    {
+      "event_type": "RAG_RETRIEVAL",
+      "user_id": "emp-5678",
+      "user_role": "analyst",
+      "user_department": "finance",
+      "tenant_id": "finance",
+      "data": {
+        "retrieved_doc_ids": ["doc-991", "doc-992", "doc-993"],
+        "relevance_scores": [0.95, 0.87, 0.82],
+        "retrieval_method": "vector_search",
+        "search_time_ms": 45
+      },
+      "data_classification": "CONFIDENTIAL",
+      "compliance_flags": ["SOX_RELEVANT"]
+    },
+    {
+      "event_type": "RAG_GENERATION",
+      "user_id": "emp-5678",
+      "user_role": "analyst",
+      "user_department": "finance",
+      "tenant_id": "finance",
+      "data": {
+        "model": "gpt-4",
+        "prompt_tokens": 1200,
+        "completion_tokens": 250,
+        "total_tokens": 1450,
+        "generation_time_ms": 3500,
+        "temperature": 0.7
+      },
+      "data_classification": "CONFIDENTIAL",
+      "compliance_flags": ["SOX_RELEVANT"]
+    },
+    {
+      "event_type": "ACCESS_CONTROL",
+      "user_id": "emp-9012",
+      "user_role": "engineer",
+      "user_department": "it",
+      "tenant_id": "it",
+      "data": {
+        "decision": "DENY",
+        "policy_rule": "ROLE_BASED_ACCESS_CONTROL",
+        "requested_resource": "confidential_financial_docs",
+        "reason": "Insufficient privileges - requires analyst or higher"
+      },
+      "data_classification": "INTERNAL",
+      "compliance_flags": ["ACCESS_AUDIT"]
+    },
+    {
+      "event_type": "RESPONSE_DELIVERY",
+      "user_id": "emp-5678",
+      "user_role": "analyst",
+      "user_department": "finance",
+      "tenant_id": "finance",
+      "data": {
+        "response_length": 850,
+        "response_hash": "sha256:def456...",
+        "delivery_time_ms": 120,
+        "user_acknowledged": true
+      },
+      "data_classification": "CONFIDENTIAL",
+      "compliance_flags": ["SOX_RELEVANT", "DATA_DELIVERY"]
+    },
+    {
+      "event_type": "ERROR",
+      "user_id": "emp-3456",
+      "user_role": "analyst",
+      "user_department": "hr",
+      "tenant_id": "hr",
+      "data": {
+        "error_type": "RETRIEVAL_FAILURE",
+        "error_message": "Vector database timeout after 30s",
+        "stack_trace": "truncated_for_brevity",
+        "recovery_action": "RETRY_WITH_FALLBACK"
+      },
+      "data_classification": "INTERNAL",
+      "compliance_flags": ["ERROR_AUDIT"]
+    },
+    {
+      "event_type": "RAG_QUERY",
+      "user_id": "emp-7890",
+      "user_role": "executive",
+      "user_department": "legal",
+      "tenant_id": "legal",
+      "data": {
+        "query": "Summarize pending litigation cases",
+        "query_hash": "sha256:ghi789...",
+        "sensitive_context": true
+      },
+      "data_classification": "RESTRICTED",
+      "compliance_flags": ["LEGAL_HOLD", "ATTORNEY_CLIENT"]
+    },
+    {
+      "event_type": "RAG_QUERY",
+      "user_id": "emp-2345",
+      "user_role": "data_scientist",
+      "user_department": "analytics",
+      "tenant_id": "analytics",
+      "data": {
+        "query": "What is the average customer satisfaction score?",
+        "query_hash": "sha256:jkl012..."
+      },
+      "data_classification": "INTERNAL",
+      "compliance_flags": []
+    },
+    {
+      "event_type": "ACCESS_CONTROL",
+      "user_id": "emp-6789",
+      "user_role": "contractor",
+      "user_department": "external",
+      "tenant_id": "external",
+      "data": {
+        "decision": "DENY",
+        "policy_rule": "CONTRACTOR_RESTRICTIONS",
+        "requested_resource": "internal_financial_data",
+        "reason": "Contractors cannot access financial data"
+      },
+      "data_classification": "INTERNAL",
+      "compliance_flags": ["ACCESS_AUDIT", "CONTRACTOR_ACTIVITY"]
+    },
+    {
+      "event_type": "SYSTEM",
+      "user_id": "system",
+      "user_role": "system",
+      "user_department": "system",
+      "tenant_id": "system",
+      "data": {
+        "event": "RETENTION_POLICY_APPLIED",
+        "archived_events": 150000,
+        "cold_storage_date": "2024-12-31",
+        "compliance_status": "COMPLIANT"
+      },
+      "data_classification": "INTERNAL",
+      "compliance_flags": ["SYSTEM_AUDIT"]
+    }
+  ],
+  "sample_compliance_scenarios": [
+    {
+      "scenario": "SOX_compliance_quarterly_audit",
+      "description": "Auditor requests all financial data access for Q4 2024",
+      "query_params": {
+        "tenant_id": "finance",
+        "start_time": "2024-10-01T00:00:00Z",
+        "end_time": "2024-12-31T23:59:59Z",
+        "compliance_flags": ["SOX_RELEVANT"]
+      }
+    },
+    {
+      "scenario": "GDPR_right_to_explanation",
+      "description": "User requests audit trail of their data access",
+      "query_params": {
+        "user_id": "emp-5678",
+        "start_time": "2024-01-01T00:00:00Z",
+        "end_time": "2024-12-31T23:59:59Z"
+      }
+    },
+    {
+      "scenario": "security_incident_investigation",
+      "description": "Investigate unauthorized access attempt",
+      "query_params": {
+        "event_type": "ACCESS_CONTROL",
+        "start_time": "2024-11-15T00:00:00Z",
+        "end_time": "2024-11-16T23:59:59Z",
+        "data.decision": "DENY"
+      }
+    },
+    {
+      "scenario": "legal_hold_discovery",
+      "description": "Legal team requests all litigation-related queries",
+      "query_params": {
+        "compliance_flags": ["LEGAL_HOLD", "ATTORNEY_CLIENT"],
+        "start_time": "2024-01-01T00:00:00Z"
+      }
+    }
+  ],
+  "metadata": {
+    "source": "GCC_Compliance_M3_3_Audit_Logging",
+    "purpose": "demonstration_and_testing",
+    "regulatory_frameworks": ["SOX", "GDPR", "HIPAA", "PCI-DSS", "ISO27001"],
+    "retention_policy": "7_years_minimum"
+  }
+}
