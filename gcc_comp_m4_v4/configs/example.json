@@ -1,0 +1,20 @@
+{
+  "assessment_config": {
+    "max_concurrent_initiatives": 3,
+    "pdca_cycle_weeks": 12,
+    "assessment_timeout_minutes": 30
+  },
+  "metric_targets": {
+    "pii_detection_accuracy": 99.0,
+    "audit_trail_completeness": 99.5,
+    "access_violations": 0.1,
+    "incident_mttr": 4.0,
+    "compliance_test_coverage": 95.0,
+    "training_completion_rate": 100.0
+  },
+  "alert_thresholds": {
+    "metric_degradation_datapoints": 3,
+    "critical_metric_threshold": 0.9,
+    "notification_email": "compliance-team@example.com"
+  }
+}

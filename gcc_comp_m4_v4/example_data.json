@@ -1,0 +1,341 @@
+{
+  "sample_assessment_responses": {
+    "level_2_gcc": {
+      "description": "Typical responses for a Level 2 GCC (1-2 years old, growing phase)",
+      "responses": {
+        "How mature is your compliance training program?": 2,
+        "How is compliance expertise distributed?": 2,
+        "How do you onboard new engineers on compliance?": 2,
+        "How are compliance responsibilities defined?": 2,
+        "What's the consequence of compliance violations?": 2,
+        "How documented are your compliance processes?": 2,
+        "How do you handle compliance exceptions?": 2,
+        "How integrated is compliance in your SDLC?": 2,
+        "How do you manage compliance SLAs?": 2,
+        "How often do you update compliance processes?": 2,
+        "How automated is your PII detection?": 2,
+        "How is access control implemented?": 2,
+        "How complete are your audit trails?": 2,
+        "How do you test compliance controls?": 2,
+        "How do you manage encryption keys?": 2,
+        "What compliance metrics do you track?": 2,
+        "How visible are compliance metrics?": 2,
+        "How do you respond to metric degradation?": 2,
+        "What's your PII detection accuracy target?": 2,
+        "How do you track training effectiveness?": 2,
+        "How does leadership view compliance?": 2,
+        "How do teams react to compliance requirements?": 2,
+        "How are compliance failures handled?": 2,
+        "How is compliance innovation rewarded?": 2,
+        "How transparent is compliance information?": 2
+      },
+      "expected_outcome": {
+        "overall_maturity": 2,
+        "limiting_dimension": "All dimensions equal",
+        "next_target": 3,
+        "timeline": "9-12 months to reach Level 3"
+      }
+    },
+    "mixed_maturity_gcc": {
+      "description": "GCC with strong People/Culture but weak Technology (common pattern)",
+      "responses": {
+        "How mature is your compliance training program?": 4,
+        "How is compliance expertise distributed?": 4,
+        "How do you onboard new engineers on compliance?": 4,
+        "How are compliance responsibilities defined?": 4,
+        "What's the consequence of compliance violations?": 4,
+        "How documented are your compliance processes?": 3,
+        "How do you handle compliance exceptions?": 3,
+        "How integrated is compliance in your SDLC?": 3,
+        "How do you manage compliance SLAs?": 3,
+        "How often do you update compliance processes?": 3,
+        "How automated is your PII detection?": 2,
+        "How is access control implemented?": 2,
+        "How complete are your audit trails?": 2,
+        "How do you test compliance controls?": 2,
+        "How do you manage encryption keys?": 2,
+        "What compliance metrics do you track?": 3,
+        "How visible are compliance metrics?": 3,
+        "How do you respond to metric degradation?": 3,
+        "What's your PII detection accuracy target?": 3,
+        "How do you track training effectiveness?": 3,
+        "How does leadership view compliance?": 4,
+        "How do teams react to compliance requirements?": 4,
+        "How are compliance failures handled?": 4,
+        "How is compliance innovation rewarded?": 4,
+        "How transparent is compliance information?": 4
+      },
+      "expected_outcome": {
+        "overall_maturity": 2,
+        "limiting_dimension": "Technology",
+        "people_score": 4.0,
+        "culture_score": 4.0,
+        "technology_score": 2.0,
+        "recommendation": "Focus Technology improvements - this is blocking advancement to Level 3"
+      }
+    },
+    "mature_gcc": {
+      "description": "Level 4 GCC (4+ years, enterprise phase)",
+      "responses": {
+        "How mature is your compliance training program?": 4,
+        "How is compliance expertise distributed?": 4,
+        "How do you onboard new engineers on compliance?": 4,
+        "How are compliance responsibilities defined?": 4,
+        "What's the consequence of compliance violations?": 4,
+        "How documented are your compliance processes?": 4,
+        "How do you handle compliance exceptions?": 4,
+        "How integrated is compliance in your SDLC?": 4,
+        "How do you manage compliance SLAs?": 4,
+        "How often do you update compliance processes?": 4,
+        "How automated is your PII detection?": 4,
+        "How is access control implemented?": 4,
+        "How complete are your audit trails?": 4,
+        "How do you test compliance controls?": 4,
+        "How do you manage encryption keys?": 4,
+        "What compliance metrics do you track?": 4,
+        "How visible are compliance metrics?": 4,
+        "How do you respond to metric degradation?": 4,
+        "What's your PII detection accuracy target?": 4,
+        "How do you track training effectiveness?": 4,
+        "How does leadership view compliance?": 4,
+        "How do teams react to compliance requirements?": 4,
+        "How are compliance failures handled?": 4,
+        "How is compliance innovation rewarded?": 4,
+        "How transparent is compliance information?": 4
+      },
+      "expected_outcome": {
+        "overall_maturity": 4,
+        "limiting_dimension": "None (all at Level 4)",
+        "next_target": 5,
+        "timeline": "18-24 months to reach Level 5 (culture change is slow)"
+      }
+    }
+  },
+  "sample_metric_updates": [
+    {
+      "metric_name": "pii_detection_accuracy",
+      "values_over_time": [
+        {"week": 1, "value": 95.0},
+        {"week": 2, "value": 96.5},
+        {"week": 3, "value": 97.2},
+        {"week": 4, "value": 98.1},
+        {"week": 5, "value": 98.8},
+        {"week": 6, "value": 99.2}
+      ],
+      "trend": "improving",
+      "target": 99.0,
+      "status": "meeting_target"
+    },
+    {
+      "metric_name": "audit_trail_completeness",
+      "values_over_time": [
+        {"week": 1, "value": 99.6},
+        {"week": 2, "value": 99.5},
+        {"week": 3, "value": 99.6},
+        {"week": 4, "value": 99.6},
+        {"week": 5, "value": 99.7},
+        {"week": 6, "value": 99.6}
+      ],
+      "trend": "stable",
+      "target": 99.5,
+      "status": "meeting_target"
+    },
+    {
+      "metric_name": "access_violations",
+      "values_over_time": [
+        {"week": 1, "value": 0.15},
+        {"week": 2, "value": 0.12},
+        {"week": 3, "value": 0.10},
+        {"week": 4, "value": 0.09},
+        {"week": 5, "value": 0.08},
+        {"week": 6, "value": 0.07}
+      ],
+      "trend": "improving",
+      "target": 0.1,
+      "status": "meeting_target"
+    },
+    {
+      "metric_name": "incident_mttr",
+      "values_over_time": [
+        {"week": 1, "value": 6.5},
+        {"week": 2, "value": 5.8},
+        {"week": 3, "value": 4.9},
+        {"week": 4, "value": 4.2},
+        {"week": 5, "value": 3.8},
+        {"week": 6, "value": 3.5}
+      ],
+      "trend": "improving",
+      "target": 4.0,
+      "status": "meeting_target"
+    },
+    {
+      "metric_name": "compliance_test_coverage",
+      "values_over_time": [
+        {"week": 1, "value": 92.0},
+        {"week": 2, "value": 93.5},
+        {"week": 3, "value": 94.2},
+        {"week": 4, "value": 95.1},
+        {"week": 5, "value": 95.8},
+        {"week": 6, "value": 96.0}
+      ],
+      "trend": "improving",
+      "target": 95.0,
+      "status": "meeting_target"
+    },
+    {
+      "metric_name": "training_completion_rate",
+      "values_over_time": [
+        {"week": 1, "value": 100.0},
+        {"week": 2, "value": 100.0},
+        {"week": 3, "value": 100.0},
+        {"week": 4, "value": 100.0},
+        {"week": 5, "value": 100.0},
+        {"week": 6, "value": 100.0}
+      ],
+      "trend": "stable",
+      "target": 100.0,
+      "status": "meeting_target"
+    }
+  ],
+  "sample_improvement_initiatives": [
+    {
+      "title": "Upgrade PII Detection to NER Models",
+      "dimension": "Technology",
+      "description": "Replace regex-based PII detection with NER models (spaCy/Presidio) to achieve >99% accuracy",
+      "owner": "Security Team",
+      "timeline_weeks": 8,
+      "impact": "High",
+      "effort": "Medium",
+      "success_criteria": [
+        "PII accuracy >99% (true positive)",
+        "False positive rate <1%",
+        "Automated accuracy validation in CI/CD"
+      ]
+    },
+    {
+      "title": "Implement Role-Specific Compliance Certification",
+      "dimension": "People",
+      "description": "Create certification tracks for developers, operations, and business teams with quarterly testing",
+      "owner": "Learning & Development",
+      "timeline_weeks": 12,
+      "impact": "High",
+      "effort": "Medium",
+      "success_criteria": [
+        "100% employees certified within role track",
+        "Average quiz score >85%",
+        "Correlation analysis: training vs. incident reduction"
+      ]
+    },
+    {
+      "title": "Deploy OPA Policies for Continuous Compliance Scanning",
+      "dimension": "Process",
+      "description": "Implement Open Policy Agent (OPA) in CI/CD pipeline for automated compliance policy enforcement",
+      "owner": "DevOps Team",
+      "timeline_weeks": 10,
+      "impact": "High",
+      "effort": "High",
+      "success_criteria": [
+        ">95% test coverage for OPA policies",
+        "Zero production deployments violating policies",
+        "Policy review and update process established"
+      ]
+    },
+    {
+      "title": "Build Grafana Compliance Metrics Dashboard",
+      "dimension": "Metrics",
+      "description": "Create real-time dashboard for 6 key compliance metrics with 3-6 month trend lines and alerting",
+      "owner": "Platform Team",
+      "timeline_weeks": 6,
+      "impact": "Medium",
+      "effort": "Low",
+      "success_criteria": [
+        "All 6 metrics visible in real-time",
+        "Alerts configured for degradation (3 datapoints)",
+        "Dashboard accessible to all engineers"
+      ]
+    },
+    {
+      "title": "Establish Compliance Innovation Time (Hackathon)",
+      "dimension": "Culture",
+      "description": "Quarterly compliance hackathons with spot bonuses for best improvements",
+      "owner": "Leadership Team",
+      "timeline_weeks": 4,
+      "impact": "Medium",
+      "effort": "Low",
+      "success_criteria": [
+        "First hackathon completed with >50% participation",
+        "3+ innovative solutions implemented",
+        "Compliance innovation added to performance reviews"
+      ]
+    }
+  ],
+  "sample_pdca_cycle": {
+    "cycle_name": "2025-Q1",
+    "duration_weeks": 12,
+    "phase_breakdown": {
+      "plan": {
+        "weeks": "1-2",
+        "activities": [
+          "Conduct maturity assessment",
+          "Identify Technology as limiting dimension (Level 2)",
+          "Select 3 initiatives: PII upgrade, OPA policies, Grafana dashboard",
+          "Assign owners and set goals"
+        ]
+      },
+      "do": {
+        "weeks": "3-8",
+        "activities": [
+          "Execute PII NER model implementation",
+          "Deploy OPA policies to staging",
+          "Build Grafana dashboard prototype",
+          "Track metrics weekly",
+          "Hold bi-weekly progress reviews"
+        ]
+      },
+      "check": {
+        "weeks": "9-10",
+        "activities": [
+          "Measure PII accuracy: 95% → 99.2% (success)",
+          "OPA coverage: 87% (below 95% target, needs work)",
+          "Grafana dashboard: completed and adopted",
+          "Post-implementation review"
+        ]
+      },
+      "act": {
+        "weeks": "11-12",
+        "activities": [
+          "Standardize NER-based PII detection (update docs)",
+          "Continue OPA policy work in next cycle (didn't reach target)",
+          "Share Grafana dashboard template with other teams",
+          "Plan next cycle: Focus on remaining Technology gaps"
+        ]
+      }
+    }
+  },
+  "common_failure_scenarios": [
+    {
+      "failure": "Skipping Check phase",
+      "symptoms": "Initiatives completed but no one knows if they worked",
+      "impact": "Wasted effort, no learning",
+      "fix": "Mandatory week 9-10 review meeting, metrics required"
+    },
+    {
+      "failure": "Not Acting on lessons",
+      "symptoms": "Lessons documented but same mistakes repeated",
+      "impact": "No continuous improvement",
+      "fix": "Action items with owners, track in next cycle planning"
+    },
+    {
+      "failure": "Too many concurrent initiatives",
+      "symptoms": "10+ initiatives, none complete by week 12",
+      "impact": "Burnout, low completion rate",
+      "fix": "Limit to 3-4 per cycle, prioritize ruthlessly"
+    },
+    {
+      "failure": "Metric regression unnoticed",
+      "symptoms": "PII accuracy drops from 99% to 95% over 4 weeks",
+      "impact": "Sliding back to lower maturity level",
+      "fix": "Automated alerts on 3-datapoint degradation trend"
+    }
+  ]
+}
